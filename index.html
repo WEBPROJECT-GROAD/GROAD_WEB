@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G-road Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html,
+        body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #11ddb1;
+            font-weight: bold;
+            color: #11ddb1;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid #d9d9d9;
+        }
+
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 50%;
+            max-width: 600px;
+            background: #fff;
+            box-shadow: 0px 0px 8px 0 rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 90%;
+            font-size: 15px;
+            color: #d9d9d9;
+        }
+
+        .search-bar-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #10d8b3;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #838383;
+        }
+
+        .top-category-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .profile-card {
+            width: 157px;
+            height: 167px;
+            border-radius: 12px;
+            border: 1px solid #d9d9d9;
+        }
+
+        .profile-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #11ddb1;
+            text-align: center;
+        }
+
+        .profile-info {
+            font-size: 13px;
+            color: #646464;
+            text-align: center;
+        }
+
+        .hot-section {
+            background: rgba(17, 221, 177, 0.5);
+            border-radius: 12px;
+        }
+
+        .best-badge {
+            background: #000;
+            border-radius: 25px;
+            font-size: 10px;
+            color: #fff;
+            display: inline-block;
+            padding: 2px 8px;
+        }
+
+        .category-content {
+            width: 351px;
+            height: 112px;
+            border-radius: 12px;
+            border: 1px solid #d9d9d9;
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .category-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #11ddb1;
+        }
+
+        .category-description {
+            font-size: 12px;
+            color: #bebebe;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <!-- G-road Logo -->
+        <div class="logo-container">
+            <svg width="27" height="39" viewBox="0 0 27 39" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 26.56px; height: 39px; margin-right: 10px;" preserveAspectRatio="none">
+                <path
+                    d="M2.76465 5.29428C0.733864 9.2891 1.94507 14.4183 3.22389 17.7219C-3.76363 25.9188 2.0481 29.8157 7.08717 29.8157C14.8138 29.8157 20.6653 29.5799 20.3005 33.7754C20.0451 36.712 17.2362 37.6057 13.1932 36.1357C19.1825 43.0963 30.1699 28.7177 21.5858 25.4567C20.1026 24.8933 18.5497 24.709 17.3333 24.7766C7.38952 25.5829 5.76926 23.6008 5.40748 22.4251C4.86997 20.6782 7.19915 18.1138 8.43093 17.05C7.45236 18.9094 7.94873 21.2618 9.9913 21.7545C13.0119 22.483 16.5952 22.0552 18.5091 21.4172C18.8432 21.2887 19.1586 21.1426 19.4565 20.9808C25.7358 17.5712 24.724 8.40612 24.724 1.26088C22.574 2.33589 22.5404 1.50165 19.3489 0.75697C13.3245 -0.648721 5.568 -0.220286 2.76465 5.29428Z"
+                    fill="url(#paint0_diamond_1_981)"></path>
+                <path
+                    d="M12.7982 11.8425L7.06558 16.2097C7.77465 15.3139 7.64949 14.362 7.06558 12.4544C6.14445 9.44507 8.12645 5.99054 11.0902 4.93197C13.0626 4.22751 15.652 4.25736 18.8473 5.80625C20.1911 8.99768 20.3404 14.0261 16.981 16.2097C14.2934 17.9566 10.6977 16.2617 9.60678 15.8138L12.7982 11.8425Z"
+                    fill="white"></path>
+                <defs>
+                    <radialGradient id="paint0_diamond_1_981" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                        gradientTransform="translate(13.1341 2.10073) rotate(71.565) scale(42.4933 124.651)">
+                        <stop stop-color="#00E4A9"></stop>
+                        <stop offset="1" stop-color="#00B7FF"></stop>
+                    </radialGradient>
+                </defs>
+            </svg>
+            <div>
+                <p style="font-size: 18px; font-weight: 700; color: #0bddb0; margin: 0;">G-road</p>
+                <p style="font-size: 10px; font-weight: 700; color: #b9b9b9; margin: 0;">그 길 위에 우리</p>
+            </div>
+        </div>
+        <!-- Logout and My Page -->
+        <div style="display: flex; gap: 20px;">
+            <p style="font-size: 16px; font-weight: 500; color: #b3b3b3; margin: 0;">로그아웃</p>
+            <p style="font-size: 16px; font-weight: 500; color: #b3b3b3; margin: 0;">마이페이지</p>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <div class="search-bar-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="#10d8b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+            <input type="text" placeholder="검색어를 입력해주세요">
+            <div class="search-bar-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="#10d8b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <p style="font-size: 15px; font-weight: 700; color: #10d8b3;">홈</p>
+        <p style="font-size: 15px; font-weight: 500; color: #b3b3b3;">이력서 게시판</p>
+        <p style="font-size: 15px; font-weight: 500; color: #b3b3b3;">후기 게시판</p>
+        <p style="font-size: 15px; font-weight: 500; color: #b3b3b3;">취준플러스</p>
+    </div>
+
+    <!-- Content Sections (HOT 이력서 & HOT 후기) -->
+    <div style="display: flex; justify-content: space-around; padding: 20px;">
+        <div style="width: 414px; height: 532px;">
+            <div
+                style="width: 148px; height: 81px; position: absolute; left: 274.5px; top: 439.5px; border-radius: 12px; background: #11ddb1;">
+            </div>
+            <div
+                style="width: 149px; height: 87px; position: absolute; left: 539.5px; top: 439.5px; border-radius: 12px; background: #11ddb1;">
+            </div>
+            <svg width="430" height="516" viewBox="0 0 430 516" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="position: absolute; left: 274.5px; top: 439.5px;" preserveAspectRatio="none">
+                <g filter="url(#filter0_d_1_1022)">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M150 8C144.477 8 140 12.4772 140 18V34.1786C140 42.4629 133.284 49.1786 125 49.1786H20C13.3726 49.1786 8 54.5512 8 61.1786V496C8 502.627 13.3726 508 20 508H410C416.627 508 422 502.627 422 496V61.1786C422 54.5512 416.627 49.1786 410 49.1786H304C295.716 49.1786 289 42.4629 289 34.1786V18C289 12.4772 284.523 8 279 8H150Z"
+                        fill="white"></path>
+                </g>
+                <defs>
+                    <filter id="filter0_d_1_1022" x="0" y="0" width="430" height="516" filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                            result="hardAlpha"></feColorMatrix>
+                        <feOffset></feOffset>
+                        <feGaussianBlur stdDeviation="4"></feGaussianBlur>
+                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0">
+                        </feColorMatrix>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1022"></feBlend>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1022" result="shape">
+                        </feBlend>
+                    </filter>
+                </defs>
+            </svg>
+            <p
+                style="width: 120px; height: 20px; position: absolute; left: 300px; top: 451px; font-size: 15px; font-weight: 600; text-align: left; color: #fff;">
+                조회수 TOP 5
+            </p>
+            <p
+                style="width: 120px; height: 20px; position: absolute; left: 577px; top: 451px; font-size: 15px; font-weight: 600; text-align: left; color: #fff;">
+                스크랩 TOP 5
+            </p>
+            <div
+                style="width: 157px; height: 167px; position: absolute; left: 311.5px; top: 513.5px; border-radius: 12px; border-width: 1px; border-color: #d9d9d9;">
+            </div>
+            <p
+                style="width: 120px; height: 20px; position: absolute; left: 439px; top: 451px; font-size: 15px; font-weight: 700; text-align: left; color: #12dcb1;">
+                좋아요 TOP 5
+            </p>
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="position: absolute; left: 290.5px; top: 497.5px;" preserveAspectRatio="xMidYMid meet">
+                <g filter="url(#filter0_d_1_1029)">
+                    <circle cx="28" cy="28" r="20" fill="#11DDB1"></circle>
+                </g>
+                <defs>
+                    <filter id="filter0_d_1_1029" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                            result="hardAlpha"></feColorMatrix>
+                        <feOffset></feOffset>
+                        <feGaussianBlur stdDeviation="4"></feGaussianBlur>
+                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                        <feColorMatrix type="matrix"
+                            values="0 0 0 0 0.0666667 0 0 0 0 0.866667 0 0 0 0 0.694118 0 0 0 1 0"></feColorMatrix>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1029"></feBlend>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1029" result="shape">
+                        </feBlend>
+                    </filter>
+                </defs>
+            </svg>
+            <p
+                style="width: 61px; height: 37px; position: absolute; left: 297px; top: 510px; font-size: 13px; font-weight: 700; text-align: left; color: #fff;">
+                Best
+            </p>
+            <div
+                style="width: 157px; height: 167px; position: absolute; left: 504.5px; top: 513.5px; border-radius: 12px; border-width: 1px; border-color: #d9d9d9;">
+            </div>
+            <p
+                style="width: 137px; height: 18px; position: absolute; left: 515px; top: 602px; font-size: 14px; font-weight: 700; text-align: center; color: #11ddb1;">
+                <span
+                    style="width: 137px; height: 18px; font-size: 14px; font-weight: 700; text-align: center; color: #11ddb1;">홍*동
+                    (25)</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 18px; position: absolute; left: 324px; top: 602px; font-size: 14px; font-weight: 700; text-align: center; color: #11ddb1;">
+                <span
+                    style="width: 137px; height: 18px; font-size: 14px; font-weight: 700; text-align: center; color: #11ddb1;">김*미
+                    (25)</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 324px; top: 626px; font-size: 13px; font-weight: 600; text-align: center; color: #646464;">
+                <span
+                    style="width: 137px; height: 17px; font-size: 13px; font-weight: 600; text-align: center; color: #646464;">경제학과
+                    3학년</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 319px; top: 645px; font-size: 13px; text-align: center; color: #646464;">
+                희망
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 513px; top: 626px; font-size: 13px; font-weight: 600; text-align: center; color: #646464;">
+                <span
+                    style="width: 137px; height: 17px; font-size: 13px; font-weight: 600; text-align: center; color: #646464;">경제학과
+                    3학년</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 508px; top: 645px; font-size: 13px; text-align: center; color: #646464;">
+                희망
+            </p>
+            <img style="position: absolute; left: 369.5px; top: 545.5px;" src="ellipse-25.png" /><img
+                style="position: absolute; left: 560.5px; top: 545.5px;" src="ellipse-31.png" /><svg width="56"
+                height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="position: absolute; left: 487.5px; top: 493.5px;" preserveAspectRatio="xMidYMid meet">
+                <g filter="url(#filter0_d_1_1040)">
+                    <circle cx="28" cy="28" r="20" fill="#11DDB1"></circle>
+                </g>
+                <defs>
+                    <filter id="filter0_d_1_1040" x="0" y="0" width="56" height="56" filterUnits="userSpaceOnUse"
+                        color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                            result="hardAlpha"></feColorMatrix>
+                        <feOffset></feOffset>
+                        <feGaussianBlur stdDeviation="4"></feGaussianBlur>
+                        <feComposite in2="hardAlpha" operator="out"></feComposite>
+                        <feColorMatrix type="matrix"
+                            values="0 0 0 0 0.0705882 0 0 0 0 0.862745 0 0 0 0 0.690196 0 0 0 1 0"></feColorMatrix>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1040"></feBlend>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1040" result="shape">
+                        </feBlend>
+                    </filter>
+                </defs>
+            </svg>
+            <p
+                style="width: 61px; height: 37px; position: absolute; left: 494px; top: 506px; font-size: 13px; font-weight: 700; text-align: left; color: #fff;">
+                Best
+            </p>
+            <p style="position: absolute; left: 616px; top: 908px; font-size: 13px; text-align: left; color: #969696;">
+                더보기
+            </p>
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 24px; height: 25px; position: absolute; left: 675px; top: 903px;"
+                preserveAspectRatio="none">
+                <ellipse cx="9" cy="9.375" rx="9" ry="9.375" transform="matrix(-1 0 0 1 21 3.125)" fill="white">
+                </ellipse>
+                <path d="M10.5 7.8125L15 12.5L10.5 17.1875" stroke="#969696" stroke-width="1.3" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 24px; height: 25px; position: absolute; left: 653px; top: 649px;"
+                preserveAspectRatio="none">
+                <ellipse cx="9" cy="9.375" rx="9" ry="9.375" transform="matrix(-1 0 0 1 21 3.125)" fill="white">
+                </ellipse>
+                <path d="M10.5 7.8125L15 12.5L10.5 17.1875" stroke="#969696" stroke-width="1.3" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg><svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 24px; height: 25px; position: absolute; left: 463px; top: 649px;"
+                preserveAspectRatio="none">
+                <ellipse cx="9" cy="9.375" rx="9" ry="9.375" transform="matrix(-1 0 0 1 21 3.125)" fill="white">
+                </ellipse>
+                <path d="M10.5 7.8125L15 12.5L10.5 17.1875" stroke="#969696" stroke-width="1.3" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <div
+                style="width: 351px; height: 62px; position: absolute; left: 310.5px; top: 833.5px; border-radius: 12px; border-width: 1px; border-color: #d9d9d9;">
+            </div>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 408px; top: 867px; font-size: 13px; text-align: center; color: #646464;">
+                희망
+            </p>
+            <p
+                style="width: 137px; height: 18px; position: absolute; left: 345px; top: 856px; font-size: 14px; font-weight: 500; text-align: center; color: #737374;">
+                <span
+                    style="width: 137px; height: 18px; font-size: 14px; font-weight: 500; text-align: center; color: #737374;">홍*동
+                    (25)</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 436px; top: 846px; font-size: 13px; font-weight: 500; text-align: center; color: #646464;">
+                <span
+                    style="width: 137px; height: 17px; font-size: 13px; font-weight: 500; text-align: center; color: #646464;">경제학과
+                    3학년</span><br />
+            </p>
+            <img style="position: absolute; left: 331.5px; top: 847.5px;" src="ellipse-28.png" /><svg width="24"
+                height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 24px; height: 25px; position: absolute; left: 654px; top: 852px;"
+                preserveAspectRatio="none">
+                <ellipse cx="9" cy="9.375" rx="9" ry="9.375" transform="matrix(-1 0 0 1 21 3.125)" fill="white">
+                </ellipse>
+                <path d="M10.5 7.8125L15 12.5L10.5 17.1875" stroke="#969696" stroke-width="1.3" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <div
+                style="width: 351px; height: 62px; position: absolute; left: 310.5px; top: 761.5px; border-radius: 12px; border-width: 1px; border-color: #d9d9d9;">
+            </div>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 408px; top: 795px; font-size: 13px; text-align: center; color: #646464;">
+                희망
+            </p>
+            <p
+                style="width: 137px; height: 18px; position: absolute; left: 345px; top: 784px; font-size: 14px; font-weight: 500; text-align: center; color: #737374;">
+                <span
+                    style="width: 137px; height: 18px; font-size: 14px; font-weight: 500; text-align: center; color: #737374;">홍*동
+                    (25)</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 436px; top: 774px; font-size: 13px; font-weight: 500; text-align: center; color: #646464;">
+                <span
+                    style="width: 137px; height: 17px; font-size: 13px; font-weight: 500; text-align: center; color: #646464;">경제학과
+                    3학년</span><br />
+            </p>
+            <img style="position: absolute; left: 331.5px; top: 775.5px;" src="ellipse-29.png" /><svg width="24"
+                height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 24px; height: 25px; position: absolute; left: 654px; top: 780px;"
+                preserveAspectRatio="none">
+                <ellipse cx="9" cy="9.375" rx="9" ry="9.375" transform="matrix(-1 0 0 1 21 3.125)" fill="white">
+                </ellipse>
+                <path d="M10.5 7.8125L15 12.5L10.5 17.1875" stroke="#969696" stroke-width="1.3" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <div
+                style="width: 351px; height: 62px; position: absolute; left: 310.5px; top: 689.5px; border-radius: 12px; border-width: 1px; border-color: #d9d9d9;">
+            </div>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 408px; top: 723px; font-size: 13px; text-align: center; color: #646464;">
+                희망
+            </p>
+            <p
+                style="width: 137px; height: 18px; position: absolute; left: 345px; top: 712px; font-size: 14px; font-weight: 500; text-align: center; color: #737374;">
+                <span
+                    style="width: 137px; height: 18px; font-size: 14px; font-weight: 500; text-align: center; color: #737374;">홍*동
+                    (25)</span><br />
+            </p>
+            <p
+                style="width: 137px; height: 17px; position: absolute; left: 436px; top: 702px; font-size: 13px; font-weight: 500; text-align: center; color: #646464;">
+                <span
+                    style="width: 137px; height: 17px; font-size: 13px; font-weight: 500; text-align: center; color: #646464;">경제학과
+                    3학년</span><br />
+            </p>
+            <img style="position: absolute; left: 331.5px; top: 703.5px;" src="ellipse-30.png" /><svg width="24"
+                height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="width: 24px; height: 25px; position: absolute; left: 654px; top: 708px;"
+                preserveAspectRatio="none">
+                <ellipse cx="9" cy="9.375" rx="9" ry="9.375" transform="matrix(-1 0 0 1 21 3.125)" fill="white">
+                </ellipse>
+                <path d="M10.5 7.8125L15 12.5L10.5 17.1875" stroke="#969696" stroke-width="1.3" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <p
+                style="width: 114px; height: 15px; position: absolute; left: 275px; top: 408px; font-size: 17px; font-weight: 700; text-align: left; color: #838383;">
+                HOT 이력서 ✨
+            </p>
+            <div
+                style="width: 37px; height: 19px; position: absolute; left: 421.5px; top: 523.5px; border-radius: 25px; background: #000;">
+            </div>
+            <p
+                style="width: 34px; height: 18px; position: absolute; left: 423px; top: 525px; font-size: 10px; text-align: center; color: #fff;">
+                <span
+                    style="width: 34px; height: 18px; font-size: 10px; font-weight: 500; text-align: center; color: #fff;">👍
+                </span><span
+                    style="width: 34px; height: 18px; font-size: 10px; font-weight: 700; text-align: center; color: #fff;">3</span>
+            </p>
+            <div
+                style="width: 37px; height: 19px; position: absolute; left: 614.5px; top: 523.5px; border-radius: 25px; background: #000;">
+            </div>
+            <p
+                style="width: 34px; height: 18px; position: absolute; left: 616px; top: 525px; font-size: 10px; text-align: center; color: #fff;">
+                <span
+                    style="width: 34px; height: 18px; font-size: 10px; font-weight: 500; text-align: center; color: #fff;">👍
+                </span><span
+                    style="width: 34px; height: 18px; font-size: 10px; font-weight: 700; text-align: center; color: #fff;">3</span>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-road</title>
+    <link rel="stylesheet" href="roadmap.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="groad.png" alt="G-road Logo" class="logo-image">
+            </div>
+            <div class="search-section">
+                <input type="text" placeholder="검색어를 입력해주세요">
+                <button class="search-button">🔍</button>
+            </div>
+            <div class="profile-links">
+                <a href="#">로그아웃</a> | <a href="#">마이페이지</a>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="active">홈</a>
+            </div>
+            <div class="dropdown">
+                <a href="#">이력서 게시판</a>
+                <div class="dropdown-content">
+                    <a href="#">취업 / 인턴</a>
+                    <p>대외활동 / 공모전<br>자격 / 어학<br>창업</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">후기 게시판</a>
+                <div class="dropdown-content">
+                    <a href="#">토큰 구매</a>
+                    <p>네트워킹 파티</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">G-path</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <div class="main-content">
+            <section class="grow-info">
+                <h2>나의 이력이 Grow한지 📚 <span class="d-day">D-100</span></h2>
+            </section>
+
+            <section class="semester-selection" id="semester-selection">
+                <button class="semester-button add-semester" onclick="openSemesterModal()">
+                    <span class="icon">+</span> 학기 추가하기
+                </button>
+            </section>
+
+            <section class="timeline">
+                <h2 id="activityHeader">활동 내역</h2>
+                <button class="add-activity-button" onclick="addActivity()">활동 추가</button>
+                <div class="month-labels">
+                    <span>3월</span>
+                    <span>4월</span>
+                    <span>5월</span>
+                    <span>6월</span>
+                    <span>7월</span>
+                    <span>8월</span>
+                </div>
+                <div id="activity-list" class="activity-list">
+                </div>
+                <div id="default">
+                </div>
+            </section>
+        </div>
+
+        <aside class="average-grow">
+            <h3>평균 Grow 🌱</h3>
+            <div class="grow-stats">
+                <div class="stat-item">
+                    <span class="label">Not Grow</span>
+                    <span class="percentage">25%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Growing</span>
+                    <span class="percentage">50%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Grow!</span>
+                    <span class="percentage">75%</span>
+                </div>
+            </div>
+        </aside>
+
+        <div id="activityModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('activityModal')">&times;</span>
+                <h2>활동 추가</h2>
+                <form id="activityForm">
+                    <label for="activityType">활동 유형</label>
+                    <select id="activityType" required>
+                        <option value="" disabled selected>활동 유형을 선택해주세요</option>
+                        <option value="Study">Study</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Project">Project</option>
+                    </select>
+                    <label for="activityName">활동명</label>
+                    <input type="text" id="activityName" placeholder="활동명을 입력해주세요" required>
+
+                    <label for="startDate">활동 기간</label>
+                    <input type="date" id="startDate" required>
+                    <span>부터</span>
+                    <input type="date" id="endDate" required>
+                    <button type="button" onclick="addActivityToTimeline()">확인</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="colorModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('colorModal')">&times;</span>
+                <h2>색상 선택</h2>
+                <div class="color-options">
+                    <div class="color-option" onclick="setColor('gray')">Not Grow</div>
+                    <div class="color-option" onclick="setColor('lightgreen')">Growing</div>
+                    <div class="color-option" onclick="setColor('green')">Grow!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester Modal -->
+        <div id="semesterModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('semesterModal')">&times;</span>
+                <h2>학기 추가</h2>
+                <form id="semesterForm">
+                    <label for="yearInput">활동 년도를 입력해주세요</label>
+                    <input type="text" id="yearInput" placeholder="년도" required>
+                    <p class="note">* 필수 입력 정보입니다</p>
+
+                    <label>활동 기간을 선택해주세요</label>
+                    <div class="semester-options">
+                        <button type="button" class="semester-option" onclick="selectSemesterPeriod('상반기')">상반기
+                            (3,4,5,6,7,8월)</button>
+                        <button type="button" class="semester-option" onclick="selectSemesterPeriod('하반기')">하반기
+                            (9,10,11,12,1,2월)</button>
+                    </div>
+
+                    <button type="button" onclick="addSemesterToList()">확인</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="roadmap.js"></script>
+</body>
+
+</html>
