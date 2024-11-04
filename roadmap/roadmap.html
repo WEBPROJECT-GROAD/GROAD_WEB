@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -9,18 +9,18 @@
 </head>
 
 <body>
-
     <header>
         <div class="header-container">
             <div class="logo-section">
                 <img src="groad.png" alt="G-road Logo" class="logo-image">
             </div>
             <div class="search-section">
+                <button class="search-button"><img src="search_icon.png" alt="searchbtn"></button>
                 <input type="text" placeholder="검색어를 입력해주세요">
-                <button class="search-button">🔍</button>
+                <button class="filter-button"><img src="filter_icon.png" alt="filterbtn"></button>
             </div>
             <div class="profile-links">
-                <a href="#">로그아웃</a> | <a href="#">마이페이지</a>
+                <b><a href="#">로그아웃</a><a href="#">마이페이지</a></b>
             </div>
         </div>
 
@@ -28,21 +28,23 @@
             <div class="dropdown">
                 <a href="#" class="active">홈</a>
             </div>
-            <div class="dropdown">
+            <div class="dropdown inactive">
                 <a href="#">이력서 게시판</a>
                 <div class="dropdown-content">
-                    <a href="#">취업 / 인턴</a>
-                    <p>대외활동 / 공모전<br>자격 / 어학<br>창업</p>
+                    <li><a href="#">취업 / 인턴</a></li>
+                    <li><a href="#">대외활동 / 공모전</a></li>
+                    <li><a href="#">자격 / 어학</a></li>
+                    <li><a href="#">창업</a></li>
                 </div>
             </div>
-            <div class="dropdown">
+            <div class="dropdown inactive">
                 <a href="#">후기 게시판</a>
                 <div class="dropdown-content">
-                    <a href="#">토큰 구매</a>
-                    <p>네트워킹 파티</p>
+                    <li><a href="#">토큰 구매</a></li>
+                    <li><a href="#">네트워킹 파티</a></li>
                 </div>
             </div>
-            <div class="dropdown">
+            <div class="dropdown inactive">
                 <a href="#">G-path</a>
             </div>
         </nav>
