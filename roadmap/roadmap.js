@@ -84,7 +84,6 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = "none";
 }
 
-// Add activity to timeline and remove default image
 function addActivityToTimeline() {
     const activityType = document.getElementById("activityType").value;
     const activityName = document.getElementById("activityName").value;
@@ -92,33 +91,50 @@ function addActivityToTimeline() {
     const endDate = document.getElementById("endDate").value;
 
     if (activityType && activityName && startDate && endDate) {
-        const activityList = document.getElementById("activity-list");
-        const newActivity = document.createElement("div");
-        newActivity.classList.add("activity-item");
-        newActivity.innerHTML = `
-            <strong>${activityType}: ${activityName}</strong><br>
-            <small>${startDate} ~ ${endDate}</small>
-        `;
-        
-        // Set default color and add click event to select color
-        newActivity.style.backgroundColor = "#7EECD5";
-        newActivity.addEventListener("click", function() {
-            openColorModal(newActivity);
-        });
+        closeModal("activityModal");
 
-        activityList.appendChild(newActivity);
-        removeDefaultImage();
-        closeModal('activityModal');
+        // 타임라인에 막대 추가
+        createTimelineBar(startDate, endDate, activityType, activityName);
     } else {
         alert("모든 필드를 채워주세요.");
     }
 }
 
-// Remove default image if activities exist
+function createTimelineBar(startDate, endDate, activityType, activityName) {
+    const activityList = document.getElementById("activity-list");
+
+    // 시작 월과 종료 월 계산
+    const startMonth = new Date(startDate).getMonth() + 1;
+    const endMonth = new Date(endDate).getMonth() + 1;
+
+    // Timeline bar 생성
+    const timelineBar = document.createElement("div");
+    timelineBar.classList.add("timeline-bar");
+    timelineBar.innerHTML = `<strong>${activityType}: ${activityName}</strong><br><small>${startDate} ~ ${endDate}</small>`;
+
+    // `flex-basis`와 `marginLeft`를 사용하여 시작 위치와 길이를 조정
+    const monthsInYear = 6; // 상반기 기준
+    const startPercentage = ((startMonth - 3) / monthsInYear) * 100; // 3월 기준
+    const endPercentage = ((endMonth - 3 + 1) / monthsInYear) * 100;
+    timelineBar.style.marginLeft = `${startPercentage}%`;
+    timelineBar.style.width = `${endPercentage - startPercentage}%`;
+
+    // 기본 색상 설정 및 색상 변경 기능 추가
+    timelineBar.style.backgroundColor = "#7EECD5";
+    timelineBar.addEventListener("click", function () {
+        openColorModal(timelineBar);
+    });
+
+    activityList.appendChild(timelineBar);
+
+    // 기본 이미지를 제거합니다.
+    removeDefaultImage();
+}
+
 function removeDefaultImage() {
-    const defaultImage = document.getElementById("default").querySelector(".default-image");
-    if (defaultImage) {
-        defaultImage.remove();
+    const defaultContainer = document.getElementById("default");
+    if (defaultContainer) {
+        defaultContainer.innerHTML = ""; // 기본 이미지를 제거합니다.
     }
 }
 
@@ -224,3 +240,17 @@ function updateMonthLabels(text) {
         monthLabels.appendChild(span);
     });
 }
+
+// 사이드 바 마이페이지 함수
+
+function openSidebar() {
+    document.getElementById('myPageSidebar').classList.add('active');
+    document.getElementById('sidebarOverlay').classList.add('active');
+}
+
+function closeSidebar() {
+    document.getElementById('myPageSidebar').classList.remove('active');
+    document.getElementById('sidebarOverlay').classList.remove('active');
+}
+
+document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
