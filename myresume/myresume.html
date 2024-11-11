@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-road</title>
+    <link rel="stylesheet" href="myresume.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="groad.png" alt="G-road Logo" class="logo-image">
+            </div>
+            <div class="search-section">
+                <button class="search-button"><img src="search_icon.png" alt="searchbtn"></button>
+                <input type="text" placeholder="검색어를 입력해주세요">
+                <button class="filter-button"><img src="filter_icon.png" alt="filterbtn"></button>
+            </div>
+            <div class="profile-links">
+                <b><a href="#">로그아웃</a><a href="#" onclick="openSidebar()">마이페이지</a></b>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <div class="dropdown">
+                <a href="#" class="active">홈</a>
+            </div>
+            <div class="dropdown inactive">
+                <a href="#">이력서 게시판</a>
+                <div class="dropdown-content">
+                    <li><a href="#">취업 / 인턴</a></li>
+                    <li><a href="#">대외활동 / 공모전</a></li>
+                    <li><a href="#">자격 / 어학</a></li>
+                    <li><a href="#">창업</a></li>
+                </div>
+            </div>
+            <div class="dropdown inactive">
+                <a href="#">후기 게시판</a>
+                <div class="dropdown-content">
+                    <li><a href="#">토큰 구매</a></li>
+                    <li><a href="#">네트워킹 파티</a></li>
+                </div>
+            </div>
+            <div class="dropdown inactive">
+                <a href="#">G-path</a>
+            </div>
+        </nav>
+
+        <div id="myPageSidebar" class="sidebar">
+            <div class="sidebar-content">
+                <button class="close-sidebar" onclick="closeSidebar()">×</button>
+                <div class="user-info">
+                    <div class="user-icon">
+                        <img src="myicon.png" alt="User Icon">
+                    </div>
+                    <h2><span class="user-name">정후 님</span> 안녕하세요!</h2>
+                </div>
+                <div class="logout-button-container">
+                    <button class="logout-button">로그아웃</button>
+                </div>
+                <div class="divider"></div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="#">나의 정보</a></li>
+                        <li><a href="#">나의 이력서</a></li>
+                        <li><a href="#">나의 로드맵</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    </header>
+
+    <main class="content-container">
+        <div class="main-content">
+
+            <div class="resume-default" id="resumeDefault">
+                <img src="default_myresume.png" alt="default_myresume" class="resume-image">
+                <p class="resume-description">나의 이력서를 추가해주세요!</p>
+                <button id="addButton" class="add-resume-button" onclick="openPopup()">추가하기</button>
+            </div>
+    
+            <div id="registeredEntries" class="registered-entries" style="display: none;">
+                <h3>나의 이력서</h3>
+                <div id="entriesList" class="entries-list">
+                    <!-- Dynamic entries will appear here -->
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- 팝업 모달 -->
+        <div id="popupModal" class="popup-modal">
+            <div class="popup-content">
+                <button class="close-button" onclick="closePopup()">×</button>
+
+                <h3>카테고리</h3>
+                <select id="category" class="input-field">
+                    <option>카테고리를 선택해주세요</option>
+                    <option>대외활동</option>
+                    <option>큐시즘 26기</option>
+                </select>
+
+                <h3>활동명</h3>
+                <input type="text" id="activityName" class="input-field" placeholder="활동명을 입력해주세요">
+
+                <h3>활동기간</h3>
+                <div class="date-fields">
+                    <input type="date" id="startDate" class="input-date">
+                    <span>부터</span>
+                    <input type="date" id="endDate" class="input-date">
+                    <span>까지</span>
+                </div>
+
+                <h3>활동내용</h3>
+                <textarea id="activityDescription" class="input-textarea" placeholder="활동내용을 입력해주세요."></textarea>
+
+                <h3>첨부파일</h3>
+                <div class="file-upload">
+                    <button>첨부 파일을 등록해주세요</button>
+                    <button>첨부</button>
+                    <button>삭제</button>
+                </div>
+
+                <button class="confirm-button" onclick="addEntry()">확인</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="myresume.js"></script>
+</body>
+
+</html>
