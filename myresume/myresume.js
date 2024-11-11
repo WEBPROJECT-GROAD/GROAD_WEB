@@ -1,5 +1,4 @@
 // 사이드 바 마이페이지 함수
-
 function openSidebar() {
     document.getElementById('myPageSidebar').classList.add('active');
     document.getElementById('sidebarOverlay').classList.add('active');
@@ -12,7 +11,7 @@ function closeSidebar() {
 
 document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
 
-// 나의 이력서 팝업
+// 나의 이력서 팝업 열기 및 닫기
 function openPopup() {
     document.getElementById("popupModal").style.display = "flex";
 }
@@ -29,12 +28,7 @@ function addEntry() {
     const endDate = document.getElementById("endDate").value;
 
     if (category && activityName && startDate && endDate) {
-
-        const category = document.getElementById("category").value;
-        const activityName = document.getElementById("activityName").value;
-        const startDate = document.getElementById("startDate").value;
-        const endDate = document.getElementById("endDate").value;
-
+        // Create the entry item
         const entry = document.createElement("div");
         entry.classList.add("entry-item");
         entry.innerHTML = `
@@ -47,7 +41,7 @@ function addEntry() {
                 <button class="delete-button" style="background-color: #11ddb1; border: none; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                     <img src="delete_image.png" alt="delete" style="width: 20px; height: 20px;">
                 </button>
-                <button class="edit-button" style="background-color: #11ddb1; border: none; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                <button class="edit-button" style="background-color: #ffffff; border: 2px solid #11ddb1; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
                     <img src="edit_image.png" alt="edit" style="width: 20px; height: 20px;">
                 </button>
             </div>
@@ -79,7 +73,6 @@ function clearPopupFields() {
     document.getElementById("activityName").value = "";
     document.getElementById("startDate").value = "";
     document.getElementById("endDate").value = "";
-    document.getElementById("activityDescription").value = "";
 }
 
 // Close modal when clicking outside of the content
