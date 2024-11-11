@@ -9,14 +9,13 @@ table{width: 100%; border-collapse: collapse;}
 /* button{cusor:pointer;} */
 
 body{font-family: 'Pretendard', sans-serif;
-    background-color: #f5f5f5; 
     color:#333;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 120px;
 }
-.wrap{display: flex; justify-content: center;width: 100%; display: block;}
+.wrap{display: flex; justify-content: center;width: 100%; display: block;background-color: #f5f5f5; }
 .inner{width: 100%; max-width:1280px; margin: auto; }
 
 
@@ -40,7 +39,7 @@ body{font-family: 'Pretendard', sans-serif;
     width: 70%;
     max-width: 900px;
     height: 125px;
-    margin: 170px auto;
+    margin: 50px auto 0;
 }
 .pencil_icon img{
     margin-left: 180px;
@@ -70,23 +69,57 @@ body{font-family: 'Pretendard', sans-serif;
 .contents-wr{
     max-width: 880px;
     height: 535px;
-    background-color: #333;
-    margin: auto;
+    margin: 30px auto 0;
     display: flex;
     gap: 50px;
 }
 
 .con1 , .con2{
     width:415px;
+    height: 555px;
+}  
+.con1-block, .con2-block{
+    width:415px;
     height: 535px;
-    background-color: #969696;   
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-.ft{
-    margin:55px 0 0 0;
-    width: 100%;
-    height: 200px;
-    background-color: #000000;
+.tabs{
+    display: flex;
+    background-color: #11DDB1;
 }
-.ft-inner{width:80%; height:100%; background-color: #333; margin: auto;}
+.tab1, .tab2{
+    flex:auto;
+    padding:10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    color: #fff;
+    background-color:#11DDB1;
+    
+}
+.tab1.active, .tab2.active{
+    background-color:white;
+    color: #38a89d;
+    border-radius: 9px 9px 0 0 ;
+    z-index: 1;
+
+}
+
+.con1 > p , .con2>p{
+    padding-left: 6px; 
+    color: #838383; 
+    font-size: 17px;
+}
+.con1-con , .con2-con{
+    padding: 20px;
+}
+
+
+
+
+
 
