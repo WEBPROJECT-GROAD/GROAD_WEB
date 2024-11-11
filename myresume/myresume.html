@@ -6,18 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>G-road</title>
     <link rel="stylesheet" href="myresume.css">
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../footer.css">
 </head>
 
 <body>
     <header>
         <div class="header-container">
             <div class="logo-section">
-                <img src="groad.png" alt="G-road Logo" class="logo-image">
+                <a href="index.html"><img src="../roadmap/groad.png" alt="G-road Logo" class="logo-image"></a>
             </div>
             <div class="search-section">
-                <button class="search-button"><img src="search_icon.png" alt="searchbtn"></button>
+                <button class="search-button"><img src="../roadmap/search_icon.png" alt="searchbtn"></button>
                 <input type="text" placeholder="검색어를 입력해주세요">
-                <button class="filter-button"><img src="filter_icon.png" alt="filterbtn"></button>
+                <button class="filter-button"><img src="../roadmap/filter_icon.png" alt="filterbtn"></button>
             </div>
             <div class="profile-links">
                 <b><a href="#">로그아웃</a><a href="#" onclick="openSidebar()">마이페이지</a></b>
@@ -26,7 +28,7 @@
 
         <nav class="nav-links">
             <div class="dropdown">
-                <a href="#" class="active">홈</a>
+                <a href="index.html">홈</a>
             </div>
             <div class="dropdown inactive">
                 <a href="#">이력서 게시판</a>
@@ -45,35 +47,35 @@
                 </div>
             </div>
             <div class="dropdown inactive">
-                <a href="#">G-path</a>
+                <a href="../roadmap/roadmap.html">G-path</a>
             </div>
         </nav>
-
-        <div id="myPageSidebar" class="sidebar">
-            <div class="sidebar-content">
-                <button class="close-sidebar" onclick="closeSidebar()">×</button>
-                <div class="user-info">
-                    <div class="user-icon">
-                        <img src="myicon.png" alt="User Icon">
-                    </div>
-                    <h2><span class="user-name">정후 님</span> 안녕하세요!</h2>
-                </div>
-                <div class="logout-button-container">
-                    <button class="logout-button">로그아웃</button>
-                </div>
-                <div class="divider"></div>
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li><a href="#">나의 정보</a></li>
-                        <li><a href="#">나의 이력서</a></li>
-                        <li><a href="#">나의 로드맵</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div id="sidebarOverlay" class="sidebar-overlay"></div>
-
     </header>
+
+    <div id="myPageSidebar" class="sidebar">
+        <div class="sidebar-content">
+            <button class="close-sidebar" onclick="closeSidebar()">×</button>
+            <div class="user-info">
+                <div class="user-icon">
+                    <img src="myicon.png" alt="User Icon">
+                </div>
+                <h2><span class="user-name">정후 님</span> 안녕하세요!</h2>
+            </div>
+            <div class="logout-button-container">
+                <button class="logout-button">로그아웃</button>
+            </div>
+            <div class="divider"></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#">나의 정보</a></li>
+                    <li><a href="#">나의 이력서</a></li>
+                    <li><a href="#">나의 로드맵</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>        
+    <div id="sidebarOverlay" class="sidebar-overlay">
+    </div>
 
     <main class="content-container">
         <div class="main-content">
@@ -129,6 +131,26 @@
                 <button class="confirm-button" onclick="addEntry()">확인</button>
             </div>
         </div>
+        <footer id="ft">
+            <div class="ft-inner">
+                <nav class="ft-nav">
+                    <a href="#">이용안내</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">공지사항</a>
+                    <a href="#">자주 묻는 질문</a>
+                </nav>
+                <div class="ft-info">
+                    <h4>Team Info</h4>
+                    <ul>
+                        <li><span>CLASS NAME </span>웹프로그래밍 <span>&emsp; PROFESSOR </span>이길흥교수님</li>
+                        <li><span>TEAM LEADER </span>20101376 안정후</li>
+                        <li><span>TEAM MEMBER </span>20101742 박조아</li>
+                    </ul>
+                </div>
+                <p class="copy">Copyright © 2024 seoultech webprogramming G-ROAD. All rights reserved.</p>
+            </div>
+        </footer>
     </main>
 
     <script src="myresume.js"></script>
