@@ -146,6 +146,7 @@ body{font-family: 'Pretendard', sans-serif;
     display: block;
     margin: auto;
     margin-top: 30px;
+    box-sizing: border-box;
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -201,6 +202,13 @@ body{font-family: 'Pretendard', sans-serif;
 }
 .rvw-img{
     margin-right: 10px;
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    border: 1px solid #AFAFAF ;
+}
+#activity .rvw-img{
+    border: none;
 }
 .box-title{
     font-size: 14px;
