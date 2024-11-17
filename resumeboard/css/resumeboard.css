@@ -30,19 +30,46 @@ button{cursor: pointer;}
 
 .filter-bar > .sort-options > button{color: #A1A1A1; border-right: #A1A1A1 solid 1px; padding-right: 7px;}
 .filter-bar > .sort-options :last-child{border-right: none;}
-.filter-bar > .sort-options >.active{color:#11DDB1; font-weight: bold;}
+.filter-bar > .sort-options .btnActive{color:#11DDB1; font-weight: bold;}
 
 /* LIST CARD */
-#resumelist{
+#container{
     display: flex; 
     justify-content: center; 
     gap: 25px; 
     flex-wrap: wrap; 
     padding-bottom: 50px;}
+
 .prf-card{
+    cursor: pointer;
     display: inline-block; 
     width: 200px; 
     height: 250px; 
     border-radius: 12px;
+    align-content: center;
+    text-align: center;
     box-shadow: 0px 0px 12px 0px #0000001A;
+    position: relative;
 }
+.prf-card > .prf-img{width: 77px;}
+.prf-card > h3{color: #11DDB1; font-size: 15px;padding-top: 13px; padding-bottom: 4px;}
+.prf-card > p{color: #737374; font-size: 15px;padding-bottom: 4px;}
+.prf-card > span{color: #777777;font-size: 13px; padding-top: 0px;}
+.prf-card > .more{position: absolute; width:25px;top: 10px; right: 10px;}
+
+
+
+#prevBtn,#nextBtn {
+    margin: 10px;
+    padding: 10px 20px;
+    position: absolute;
+    background: none;
+    border: none;
+}
+#prevBtn img , #nextBtn img{width: 50px;height: 50px;}
+#prevBtn{left: 100px; top: 65%; transform: rotate(180deg);}
+#nextBtn{right: 100px;top: 65%;}
+#prevBtn:disabled,#nextBtn:disabled {
+    display: none;
+}
+
