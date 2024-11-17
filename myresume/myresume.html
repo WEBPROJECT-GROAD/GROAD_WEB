@@ -73,7 +73,7 @@
                 </ul>
             </nav>
         </div>
-    </div>        
+    </div>
     <div id="sidebarOverlay" class="sidebar-overlay">
     </div>
 
@@ -84,7 +84,7 @@
                 <p class="resume-description">나의 이력서를 추가해주세요!</p>
                 <button id="defaultAddButton" class="add-resume-button" onclick="openPopup()">추가하기</button>
             </div>
-        
+
             <div id="registeredEntries" class="registered-entries" style="display: none;">
                 <button id="entriesAddButton" class="add-resume-button top-right" onclick="openPopup()">추가하기</button>
                 <h3>나의 이력서</h3>
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <!-- 팝업 모달 -->
         <div id="popupModal" class="popup-modal">
@@ -113,9 +113,15 @@
 
                 <h3>활동기간</h3>
                 <div class="date-fields">
-                    <input type="date" id="startDate" class="input-date">
+                    <div class="input-container">
+                        <input type="date" id="startDate" class="input-date">
+                        <img src="calendar.png" alt="Calendar Icon" class="calendar-icon">
+                    </div>
                     <span>부터</span>
-                    <input type="date" id="endDate" class="input-date">
+                    <div class="input-container">
+                        <input type="date" id="endDate" class="input-date">
+                        <img src="calendar.png" alt="Calendar Icon" class="calendar-icon">
+                    </div>
                     <span>까지</span>
                 </div>
 
