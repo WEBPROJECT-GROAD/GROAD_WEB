@@ -31,6 +31,8 @@ let profiles = [
 let currentIndex = 0; 
 const pageSize = 8; // 한 페이지 프로필 수
 
+let isDetailView = false;
+
 
 // 정렬 버튼
 function sortProfiles(sortHow, clickedButton) {
@@ -70,7 +72,7 @@ function renderProfiles() {
     currentPage.forEach(profile => {
         const card = document.createElement('div');
         card.className = 'prf-card'; 
-        card.onclick = () => window.open(profile.link, '_self'); 
+        card.onclick = () => renderProfileDetails(profile); 
         card.innerHTML = `
             <img class= "more" src="../main/img/btn_to.png" alt=">">
             <img class="prf-img" src="img/prf.png" alt="${profile.name}">
@@ -85,16 +87,79 @@ function renderProfiles() {
     updateButtons();
 }
 
+//상세 이력서 화면 
+function renderProfileDetails(profile) {
+    const container = document.getElementById('container');
+    const filterBar = document.querySelector('.filter-bar'); 
+    filterBar.classList.add('hidden');
+    container.innerHTML = ''; 
+    isDetailView = true; 
+
+    container.innerHTML = `
+        <button id="page-back" onclick="backToProfiles()"> < 이력서 목록 </button>
+        <div class="profileDetail">
+            <img src="img/prf.png" alt="${profile.name}">
+            <div class="info">
+                <p>이름 : ${profile.name}</p>
+                <p>${profile.university}</p>
+                <p>희망진로 : ${profile.job}</p>
+            </div>
+            <div class="N">
+                <p>조회 N 추천${profile.recommends} 스크랩${profile.scraps}</p>
+            </div>
+        </div>
+        <div class="detailPt">
+            <h4>portfolio</h4>
+            <div class="pf-block"></div>
+            <div class="pf-block"></div>
+            <div class="pf-block"></div>
+            <div class="pf-block"></div> 
+        </div>
+        <div class="detailQA">
+            <h4>Q&A</h4>
+            <div class="qa-block"></div>
+            
+            
+        </div>
+        
+    `;
+    updateButtons()
+}
+
+// 프로필 리스트로 돌아가기
+function backToProfiles() {
+    isDetailView = false; // 상태 변경
+    renderProfiles(); // 목록 화면 렌더링
+
+    const filterBar = document.querySelector('.filter-bar'); 
+    filterBar.classList.remove('hidden');
+}
+
+
+
+
+
+
 // 탐색 기능
 function navigate(direction) {
+    if (isDetailView) return;
+
     currentIndex += direction * pageSize; // 페이지 이동
     renderProfiles();
 }
 
 // 버튼 활성화/비활성화
 function updateButtons() {
-    document.getElementById('prevBtn').disabled = currentIndex === 0;
-    document.getElementById('nextBtn').disabled = currentIndex + pageSize >= profiles.length;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (isDetailView) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+    } else {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex + pageSize >= profiles.length;
+    }
 }
 
 // 초기 렌더링
