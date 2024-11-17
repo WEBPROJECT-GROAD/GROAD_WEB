@@ -289,6 +289,7 @@ body {
 
 .main-content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -302,6 +303,22 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.entry-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 15px 25px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    width: 170%;
+    max-width: none;
+    position: relative;
+    left: 85%;
+    transform: translateX(-50%);
+    margin-top: 20px;
 }
 
 /* 이력서 기본 이미지 및 설명 스타일 */
@@ -347,14 +364,14 @@ body {
 
 /* 팝업 모달 배경 */
 .popup-modal {
-    display: none; /* Initially hidden */
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
 }
@@ -437,30 +454,24 @@ body {
     background-color: #0fbfa3;
 }
 
-/* Styles for registered entries */
 .registered-entries {
+    position: relative;
     padding: 20px;
 }
 
-.entries-list {
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#entriesList {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 20px;
-}
-
-.entry-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #eae9e9;
-    border-radius: 12px;
-    padding: 12px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    gap: 20px;
-    width: 150%;
-    max-width: 800px; 
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .entry-category {
@@ -469,26 +480,52 @@ body {
     color: #fff;
     padding: 5px 10px;
     border-radius: 8px;
-    margin-right: 10px;
 }
 
-.entry-name, .entry-dates {
-    font-size: 14px;
+.entry-name {
+    font-size: 16px;
     color: #333;
-    flex: 1;
+}
+
+.entry-dates {
+    font-size: 14px;
+    color: #666;
+    margin-left: auto;
 }
 
 .entry-actions button {
-    background-color: transparent;
-    border: none;
-    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.edit-button {
-    color: #11ddb1;
+.delete-button {
+    background-color: #ff4d4d;
 }
 
-.delete-button {
-    color: #ff4d4d;
+.edit-button {
+    background-color: #11ddb1;
+}
+
+#addButton {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #11ddb1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addButton:hover {
+    background-color: #0fbfa3;
 }
