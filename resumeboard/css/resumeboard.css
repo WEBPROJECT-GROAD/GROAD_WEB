@@ -212,23 +212,51 @@ button {
 #page-back {
     font-size: 13px;
     position: absolute;
-    top: 25%;
-    left: 325px;
+    top: 27%;
+    left: 260px;
     background: none;
     border: none;
     color: #9F9F9F
 }
 
-.detailPt h4 , .detailQA h4 {
+.detailPt h4,
+.detailQA h4 {
     color: #9F9F9F;
     padding-bottom: 20px;
 }
 
-.pf-block , .qa-block{
+.pf-block,
+.qa-block {
     box-shadow: 0px 0px 12px 0px #0000001A;
     border-radius: 12px;
     display: flex;
+    align-items: center;
     width: 880px;
     height: 100PX;
     margin-bottom: 25px;
+    padding: 0 38px;
+
+
 }
+.qa-block{height: 125px;}
+
+.detailText {
+
+    background-color: #000;
+    color: white;
+    border-radius: 46px;
+    text-align: center;
+    justify-items: center;
+    height: 34px;
+    width: 125px;
+    font-size: 16px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.pf-block >p{ color:#777777;
+    padding-left: 70px;
+    font-weight: bold;
+}
+
+.qa-block img{width: 62px; height: 65px;}

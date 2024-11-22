@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/resumeboard.css">
     <link rel="stylesheet" href="../header.css">
-    <script src="js/resumeboard.js"></script>
+    <script type="module" src="js/resumeboard.js"></script>
     <title>G-road</title>
 </head>
 
@@ -61,9 +61,9 @@
                     <p>필터 설정을 하면 내가 원하는 이력서만 볼 수 있어요!</p>
                 </div>
                 <div class="sort-options">
-                    <button class="sort-btn btnActive" onclick="sortProfiles('latest')">최신 등록 순 </button>
-                    <button class="sort-btn " onclick="sortProfiles('recommends')">추천 많은 순 </button>
-                    <button class="sort-btn " onclick="sortProfiles('scraps')">스크랩 많은 순 </button>
+                    <button class="sort-btn btnActive" data-sort="latest" onclick="sortProfiles('latest',this)">최신 등록 순 </button>
+                    <button class="sort-btn " data-sort="recommends" onclick="sortProfiles('recommends',this)">추천 많은 순 </button>
+                    <button class="sort-btn " data-sort="scraps" onclick="sortProfiles('scraps',this)">스크랩 많은 순 </button>
                 </div>
             </div>
             <button id="prevBtn" onclick="navigate(-1)" disabled><img src="../main/img/btn_to.png" alt="prev"></button>
