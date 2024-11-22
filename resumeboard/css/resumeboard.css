@@ -220,9 +220,12 @@ button {
 }
 
 .detailPt h4,
-.detailQA h4 {
+.qawrap {
     color: #9F9F9F;
     padding-bottom: 20px;
+    display:block;
+    text-align: left !important;
+    
 }
 
 .pf-block{

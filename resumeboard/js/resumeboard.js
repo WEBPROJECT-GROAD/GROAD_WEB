@@ -11,7 +11,7 @@ window.renderProfiles = renderProfiles;
 window.backToProfiles = backToProfiles;
 window.navigate = navigate;
 
-let currentIndex = 0; 
+let currentIndex = 0;
 const pageSize = 8; // 한 페이지 프로필 수
 
 let isDetailView = false;
@@ -20,15 +20,15 @@ let isDetailView = false;
 // 정렬 버튼
 function sortProfiles(sortHow, clickedButton) {
     if (sortHow === 'latest') {
-        profilesState.profiles.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); 
+        profilesState.profiles.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
     } else if (sortHow === 'recommends') {
-        profilesState.profiles.sort((a, b) => b.recommends - a.recommends); 
+        profilesState.profiles.sort((a, b) => b.recommends - a.recommends);
     } else if (sortHow === 'scraps') {
-        profilesState.profiles.sort((a, b) => b.scraps - a.scraps); 
+        profilesState.profiles.sort((a, b) => b.scraps - a.scraps);
     }
 
-    currentIndex = 0; 
-    renderProfiles(); 
+    currentIndex = 0;
+    renderProfiles();
 
     updateActiveButton(clickedButton);
 }
@@ -47,15 +47,15 @@ function updateActiveButton(btn) {
 // 프로필 렌더링
 function renderProfiles() {
     const container = document.getElementById('container');
-    container.innerHTML = ' '; 
+    container.innerHTML = ' ';
 
     const currentPage = profilesState.profiles.slice(currentIndex, currentIndex + pageSize);
 
     // 프로필생성
     currentPage.forEach(profile => {
         const card = document.createElement('div');
-        card.className = 'prf-card'; 
-        card.onclick = () => renderProfileDetails(profile); 
+        card.className = 'prf-card';
+        card.onclick = () => renderProfileDetails(profile);
         card.innerHTML = `
             <img class= "more" src="../main/img/btn_to.png" alt=">">
             <img class="prf-img" src="img/prf.png" alt="${profile.name}">
@@ -74,15 +74,15 @@ function renderProfiles() {
 //상세 이력서 화면 //
 function renderProfileDetails(profile) {
     const container = document.getElementById('container');
-    const filterBar = document.querySelector('.filter-bar'); 
+    const filterBar = document.querySelector('.filter-bar');
     filterBar.classList.add('hidden');
-    container.innerHTML = ''; 
-    isDetailView = true; 
+    container.innerHTML = '';
+    isDetailView = true;
 
-    const qnaHTML = profile.qna && profile.qna.length >0
+    const qnaHTML = profile.qna && profile.qna.length > 0
         ? profile.qna
-        .map(
-            (qnaItem) => `
+            .map(
+                (qnaItem) => `
                 <div class="qa-block">
                     <img src="img/prf.png" alt="${anonymizeName(qnaItem.questioner)}">
                     <div class= "qaText">
@@ -98,8 +98,8 @@ function renderProfileDetails(profile) {
                     </div>
                 </div>
                 `
-        )
-        .join("") : '<div class="qa-block"><p>Q&A가 없습니다.</p></div>'
+            )
+            .join("") : '<div class="qa-block"><p>Q&A가 없습니다.</p></div>'
 
     container.innerHTML = `
         <button id="page-back" onclick="backToProfiles()"> < 이력서 목록 </button>
@@ -133,9 +133,8 @@ function renderProfileDetails(profile) {
                 <p>${profile.name}</p>
             </div> 
         </div>
-        
         <div class="detailQA">
-            <h4>Q&A</h4>
+            <h4 class="qawrap">Q&A</h4>
             ${qnaHTML}    
         </div>
         <div id="askBlock">
@@ -168,7 +167,12 @@ function renderProfileDetails(profile) {
             </div>
         `;
 
-        detailQA.insertAdjacentElement("afterend", newQuestionBlock);
+        const noQnaBlock = document.querySelector(".detailQA .qa-block");
+        if (noQnaBlock && noQnaBlock.textContent.includes("Q&A가 없습니다.")) {
+            noQnaBlock.remove();
+        }
+
+        detailQA.appendChild(newQuestionBlock);
         questionInput.value = "";
     });
     updateButtons()
@@ -177,8 +181,8 @@ function renderProfileDetails(profile) {
 
 //이름 가운데 x
 function anonymizeName(name) {
-    if (name.length <= 1) return name; 
-    return name[0] + "*" + name.slice(2); 
+    if (name.length <= 1) return name;
+    return name[0] + "*" + name.slice(2);
 }
 
 
@@ -187,7 +191,7 @@ function backToProfiles() {
     isDetailView = false; // 상태 변경
     renderProfiles(); // 목록 화면 렌더링
 
-    const filterBar = document.querySelector('.filter-bar'); 
+    const filterBar = document.querySelector('.filter-bar');
     filterBar.classList.remove('hidden');
 }
 
