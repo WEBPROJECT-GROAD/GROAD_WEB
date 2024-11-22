@@ -28,7 +28,7 @@ function sortProfiles(sortHow, clickedButton) {
     }
 
     currentIndex = 0; 
-    renderProfiles(); // 정렬된 데이터로 렌더링
+    renderProfiles(); 
 
     updateActiveButton(clickedButton);
 }
@@ -70,13 +70,36 @@ function renderProfiles() {
     updateButtons();
 }
 
-//상세 이력서 화면 
+
+//상세 이력서 화면 //
 function renderProfileDetails(profile) {
     const container = document.getElementById('container');
     const filterBar = document.querySelector('.filter-bar'); 
     filterBar.classList.add('hidden');
     container.innerHTML = ''; 
     isDetailView = true; 
+
+    const qnaHTML = profile.qna && profile.qna.length >0
+        ? profile.qna
+        .map(
+            (qnaItem) => `
+                <div class="qa-block">
+                    <img src="img/prf.png" alt="${anonymizeName(qnaItem.questioner)}">
+                    <div class= "qaText">
+                        <p class="qaName">${anonymizeName(qnaItem.questioner)}</p>
+                        <p>${qnaItem.question}</p>
+                    </div>
+                </div>
+                <div class="answerWrap">
+                    <img  src="img/answer.png" alt="Answer">
+                    <div class="a-block" >
+                        <img class="qa-prf" src="img/prf.png" alt="${profile.name}">
+                        <p>${qnaItem.answer}</p>
+                    </div>
+                </div>
+                `
+        )
+        .join("") : '<div class="qa-block"><p>Q&A가 없습니다.</p></div>'
 
     container.innerHTML = `
         <button id="page-back" onclick="backToProfiles()"> < 이력서 목록 </button>
@@ -113,17 +136,50 @@ function renderProfileDetails(profile) {
         
         <div class="detailQA">
             <h4>Q&A</h4>
-            <div class="qa-block"></div>
-            
-            
+            ${qnaHTML}    
+        </div>
+        <div id="askBlock">
+            <input id="questionInput" type="text" placeholder="질문을 입력하세요" class="qa-input">
+            <button id="submitQuestion">질문 남기기</button>
         </div>
         
     `;
-    // 위에 ${profile.name} 데이터 만들면서 바꾸기
+    // 위에 ${profile.name} 데이터 만들면서 바꾸기 //
 
+    // 질문 추가 기능
+    const questionInput = document.getElementById("questionInput");
+    const submitQuestion = document.getElementById("submitQuestion");
+    const detailQA = document.querySelector(".detailQA");
+
+    submitQuestion.addEventListener("click", () => {
+        const questionText = questionInput.value.trim();
+
+        if (!questionText) {
+            alert("질문을 입력하세요!");
+            return;
+        }
+        const newQuestionBlock = document.createElement("div");
+        newQuestionBlock.className = "qa-block";
+        newQuestionBlock.innerHTML = `
+            <img src="img/prf.png" alt="이름">
+            <div class="qaText">
+                <p class="qaName">안정후</p>
+                <p>${questionText}</p>
+            </div>
+        `;
+
+        detailQA.insertAdjacentElement("afterend", newQuestionBlock);
+        questionInput.value = "";
+    });
     updateButtons()
 }
 
+
+//이름 가운데 x
+function anonymizeName(name) {
+    if (name.length <= 1) return name; 
+    return name[0] + "*" + name.slice(2); 
+}
 
 
 // 프로필 리스트로 돌아가기
@@ -134,8 +190,6 @@ function backToProfiles() {
     const filterBar = document.querySelector('.filter-bar'); 
     filterBar.classList.remove('hidden');
 }
-
-
 
 
 

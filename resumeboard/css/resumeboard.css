@@ -225,8 +225,7 @@ button {
     padding-bottom: 20px;
 }
 
-.pf-block,
-.qa-block {
+.pf-block{
     box-shadow: 0px 0px 12px 0px #0000001A;
     border-radius: 12px;
     display: flex;
@@ -238,7 +237,30 @@ button {
 
 
 }
-.qa-block{height: 125px;}
+.qa-block {
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    width: 880px;
+    height: 125PX;
+    margin-bottom: 25px;
+    padding: 0 38px;
+
+
+}
+.a-block{
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    width: 755px;
+    height: 125PX;
+    margin-bottom: 25px;
+    padding: 0 38px;
+}
+.answerWrap{display: flex;}
+.answerWrap > img{ width: 50px; height: 45px; margin: 0 38px;}
 
 .detailText {
 
@@ -259,4 +281,47 @@ button {
     font-weight: bold;
 }
 
-.qa-block img{width: 62px; height: 65px;}
+.qa-block p, .answerWrap p {color:#777777;
+    padding-left: 30px;
+    font-weight: bold;}
+.qaName{color: #11DDB1!important;}
+.qa-block img , .qa-prf{width: 62px; height: 65px;}
+
+.qaText{display: inline-block; }
+.qaText p{padding-top: 5px; padding-bottom: 3px;}
+
+/* 질문 추가 */
+#askBlock {
+    margin-bottom: 20px;
+    position: relative;
+    height: 125px;
+    display: flex;
+    width: 880px;
+}
+#questionInput {
+    
+    height: 125px;
+    width: 880px;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    border: none;
+    padding: 0 10px;
+    font-size: 16px;
+    outline: none;
+
+}
+#submitQuestion {
+    position: absolute; 
+    top: 35%;
+    right: 50px;  
+    height: 35px;
+    width: 100px;
+    background-color: #11DDB1;
+    color: #fff;
+    border: none;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 13px;
+    box-shadow: 0px 0px 8px 0px #0BDDB0;
+
+}
