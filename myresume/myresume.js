@@ -22,7 +22,6 @@ function closePopup() {
     clearPopupFields();
 }
 
-// Function to add an entry to the list
 function addEntry() {
     const category = document.getElementById("category").value;
     const activityName = document.getElementById("activityName").value;
@@ -30,11 +29,11 @@ function addEntry() {
     const endDate = document.getElementById("endDate").value;
 
     if (category && activityName && startDate && endDate) {
-        // Create a new entry element
+        
         const entry = document.createElement("div");
         entry.classList.add("entry-item");
 
-        // Generate unique ID for each entry
+        
         const entryId = `entry-${Date.now()}`;
         entry.setAttribute("id", entryId);
 
@@ -54,11 +53,9 @@ function addEntry() {
             </div>
         `;
 
-        // Append the new entry to the list
         const entriesList = document.getElementById("entriesList");
         entriesList.appendChild(entry);
 
-        // Hide the default state and show the registered entries section
         document.getElementById("resumeDefault").style.display = "none";
         document.getElementById("registeredEntries").style.display = "block";
 
@@ -68,13 +65,52 @@ function addEntry() {
     }
 }
 
-// Function to delete an entry
+function editEntry(entryId) {
+    const entry = document.getElementById(entryId);
+    if (entry) {
+
+        const category = entry.querySelector(".entry-category").innerText;
+        const activityName = entry.querySelector(".entry-name").innerText;
+        const dates = entry.querySelector(".entry-dates").innerText.split(" ~ ");
+        const startDate = dates[0].trim();
+        const endDate = dates[1].trim();
+
+        document.getElementById("category").value = category;
+        document.getElementById("activityName").value = activityName;
+        document.getElementById("startDate").value = startDate;
+        document.getElementById("endDate").value = endDate;
+
+        // Open the popup
+        openPopup();
+
+        // Update the confirm button to handle editing
+        const confirmButton = document.querySelector(".confirm-button");
+        confirmButton.onclick = function () {
+            // Update the entry with the new details
+            const updatedCategory = document.getElementById("category").value;
+            const updatedActivityName = document.getElementById("activityName").value;
+            const updatedStartDate = document.getElementById("startDate").value;
+            const updatedEndDate = document.getElementById("endDate").value;
+
+            if (updatedCategory && updatedActivityName && updatedStartDate && updatedEndDate) {
+                entry.querySelector(".entry-category").innerText = updatedCategory;
+                entry.querySelector(".entry-name").innerText = updatedActivityName;
+                entry.querySelector(".entry-dates").innerText = `${updatedStartDate} ~ ${updatedEndDate}`;
+
+                // Close the popup
+                closePopup();
+            } else {
+                alert("모든 필드를 채워주세요!");
+            }
+        };
+    }
+}
+
 function deleteEntry(entryId) {
     const entry = document.getElementById(entryId);
     if (entry) {
         entry.remove();
 
-        // Check if the list is empty
         const entriesList = document.getElementById("entriesList");
         if (entriesList.children.length === 0) {
             document.getElementById("resumeDefault").style.display = "flex";
@@ -83,7 +119,6 @@ function deleteEntry(entryId) {
     }
 }
 
-// Function to clear the input fields after adding
 function clearPopupFields() {
     document.getElementById("category").value = "";
     document.getElementById("activityName").value = "";
@@ -91,7 +126,6 @@ function clearPopupFields() {
     document.getElementById("endDate").value = "";
 }
 
-// Close modal when clicking outside of the content
 window.onclick = function (event) {
     const modal = document.getElementById("popupModal");
     if (event.target == modal) {
