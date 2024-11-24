@@ -73,27 +73,26 @@
                 </ul>
             </nav>
         </div>
-    </div>        
+    </div>
     <div id="sidebarOverlay" class="sidebar-overlay">
     </div>
 
     <main class="content-container">
         <div class="main-content">
-
             <div class="resume-default" id="resumeDefault">
                 <img src="default_myresume.png" alt="default_myresume" class="resume-image">
                 <p class="resume-description">나의 이력서를 추가해주세요!</p>
-                <button id="addButton" class="add-resume-button" onclick="openPopup()">추가하기</button>
+                <button id="defaultAddButton" class="add-resume-button" onclick="openPopup()">추가하기</button>
             </div>
-    
+
             <div id="registeredEntries" class="registered-entries" style="display: none;">
+                <button id="entriesAddButton" class="add-resume-button top-right" onclick="openPopup()">추가하기</button>
                 <h3>나의 이력서</h3>
                 <div id="entriesList" class="entries-list">
-                    <!-- Dynamic entries will appear here -->
                 </div>
             </div>
-            
         </div>
+
 
         <!-- 팝업 모달 -->
         <div id="popupModal" class="popup-modal">
@@ -104,7 +103,9 @@
                 <select id="category" class="input-field">
                     <option>카테고리를 선택해주세요</option>
                     <option>대외활동</option>
-                    <option>큐시즘 26기</option>
+                    <option>공모전</option>
+                    <option>스터디</option>
+                    <option>인턴</option>
                 </select>
 
                 <h3>활동명</h3>
@@ -112,9 +113,15 @@
 
                 <h3>활동기간</h3>
                 <div class="date-fields">
-                    <input type="date" id="startDate" class="input-date">
+                    <div class="input-container">
+                        <input type="date" id="startDate" class="input-date">
+                        <img src="calendar.png" alt="Calendar Icon" class="calendar-icon">
+                    </div>
                     <span>부터</span>
-                    <input type="date" id="endDate" class="input-date">
+                    <div class="input-container">
+                        <input type="date" id="endDate" class="input-date">
+                        <img src="calendar.png" alt="Calendar Icon" class="calendar-icon">
+                    </div>
                     <span>까지</span>
                 </div>
 

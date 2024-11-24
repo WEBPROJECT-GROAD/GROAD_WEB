@@ -103,31 +103,44 @@ function addActivityToTimeline() {
 function createTimelineBar(startDate, endDate, activityType, activityName) {
     const activityList = document.getElementById("activity-list");
 
-    // 시작 월과 종료 월 계산
+    // Calculate start and end months
     const startMonth = new Date(startDate).getMonth() + 1;
     const endMonth = new Date(endDate).getMonth() + 1;
 
-    // Timeline bar 생성
+    // Check if we are in 하반기 or 상반기
+    const isSecondHalf = selectedPeriod === '하반기';
+    const monthsInSemester = 6;
+    let startOffset, endOffset;
+
+    if (isSecondHalf) {
+        // For 하반기: 9월 ~ 2월 (mapped as 9 to 14 internally)
+        startOffset = startMonth >= 9 ? startMonth - 9 : startMonth + 3; // Adjust months to 9-14 range
+        endOffset = endMonth >= 9 ? endMonth - 9 : endMonth + 3;
+    } else {
+        // For 상반기: 3월 ~ 8월
+        startOffset = startMonth - 3; // 3 to 8 maps directly to 0-5
+        endOffset = endMonth - 3;
+    }
+
+    // Calculate position and width of the timeline bar in percentage
+    const startPercentage = (startOffset / monthsInSemester) * 100;
+    const endPercentage = ((endOffset + 1) / monthsInSemester) * 100; // +1 to include the end month
+
+    // Create Timeline bar element
     const timelineBar = document.createElement("div");
     timelineBar.classList.add("timeline-bar");
     timelineBar.innerHTML = `<strong>${activityType}: ${activityName}</strong><br><small>${startDate} ~ ${endDate}</small>`;
 
-    // `flex-basis`와 `marginLeft`를 사용하여 시작 위치와 길이를 조정
-    const monthsInYear = 6; // 상반기 기준
-    const startPercentage = ((startMonth - 3) / monthsInYear) * 100; // 3월 기준
-    const endPercentage = ((endMonth - 3 + 1) / monthsInYear) * 100;
     timelineBar.style.marginLeft = `${startPercentage}%`;
     timelineBar.style.width = `${endPercentage - startPercentage}%`;
 
-    // 기본 색상 설정 및 색상 변경 기능 추가
+    // Default color and open color modal on click
     timelineBar.style.backgroundColor = "#7EECD5";
     timelineBar.addEventListener("click", function () {
         openColorModal(timelineBar);
     });
 
     activityList.appendChild(timelineBar);
-
-    // 기본 이미지를 제거합니다.
     removeDefaultImage();
 }
 
@@ -177,9 +190,9 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = "none";
 }
 
-// Function to handle period selection
 function selectSemesterPeriod(period) {
     selectedPeriod = period;
+
     // Highlight the selected button
     document.querySelectorAll(".semester-option").forEach(button => {
         button.style.backgroundColor = "#11DDB1";
@@ -189,6 +202,9 @@ function selectSemesterPeriod(period) {
     } else {
         document.querySelector(".semester-option:nth-child(2)").style.backgroundColor = "#0fbfa3";
     }
+
+    // Reset activity list
+    document.getElementById("activity-list").innerHTML = "";
 }
 
 // Function to add semester to the list and make it clickable

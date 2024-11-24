@@ -1,25 +1,44 @@
 @charset "utf-8";
 
 /* Basic Reset */
-* {margin: 0;padding: 0;box-sizing: border-box;}
-li{list-style: none;}
-a{text-decoration: none; color: inherit;}
-img{max-width: 100%; vertical-align: top;}
-table{width: 100%; border-collapse: collapse;}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
 body {
     font-family: 'Pretendard', sans-serif;
-    background-color: #f5f5f5; 
+    background-color: #f5f5f5;
     padding-top: 120px;
 }
 
 /* Header Styling */
 header {
-    margin:auto;
+    margin: auto;
     background-color: white;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    position:absolute;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 10;
@@ -65,7 +84,8 @@ header {
     height: 50px;
 }
 
-.search-button , .filter-button {
+.search-button,
+.filter-button {
     background: none;
     border: none;
     cursor: pointer;
@@ -121,7 +141,7 @@ header {
     border-radius: 8px;
     z-index: 1;
     text-align: center;
-    gap: 15px; 
+    gap: 15px;
 }
 
 .dropdown-content a {
@@ -211,7 +231,8 @@ header {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    margin-top: 10px; /* 아이콘과 텍스트 영역 아래에 여백 */
+    margin-top: 10px;
+    /* 아이콘과 텍스트 영역 아래에 여백 */
 }
 
 .logout-button {
@@ -289,6 +310,7 @@ body {
 
 .main-content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -298,7 +320,26 @@ body {
     max-width: 900px;
     padding: 60px;
     text-align: center;
-    margin-top: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.entry-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 15px 25px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    width: 170%;
+    max-width: none;
+    position: relative;
+    left: 85%;
+    transform: translateX(-50%);
+    margin-top: 20px;
 }
 
 /* 이력서 기본 이미지 및 설명 스타일 */
@@ -310,18 +351,32 @@ body {
 }
 
 .resume-image {
-    width: 150px; /* 이미지 크기 조정 */
+    width: 150px;
+    /* 이미지 크기 조정 */
     height: auto;
     opacity: 0.7;
 }
 
 .resume-description {
-    font-size: 18px; /* 텍스트 크기 조정 */
+    font-size: 18px;
+    /* 텍스트 크기 조정 */
     color: #666;
 }
 
 /* 추가 버튼 스타일 */
 .add-resume-button {
+    padding: 12px 24px;
+    background-color: #11DDB1;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.add-resume-button.top-right {
+    position: absolute;
     padding: 12px 24px;
     background-color: #11DDB1;
     color: white;
@@ -344,14 +399,14 @@ body {
 
 /* 팝업 모달 배경 */
 .popup-modal {
-    display: none; /* Initially hidden */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
 }
@@ -365,6 +420,7 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 .close-button {
@@ -392,6 +448,7 @@ body {
     border-radius: 5px;
     font-size: 14px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .input-textarea {
@@ -402,7 +459,73 @@ body {
 .date-fields {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 8px; /* Space between inputs and text */
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-date {
+    width: 150px; /* Adjust width for compact inputs */
+    padding: 8px 10px;
+    padding-right: 35px; /* Space for calendar icon */
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer; /* Makes it feel interactive */
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    pointer-events: none; /* Ensures icon doesn't block input click */
+    opacity: 0.6; /* Optional: Slightly transparent */
+}
+
+span {
+    font-size: 14px;
+    color: #555;
+}
+
+.file-upload {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    /* Space between file-related buttons */
+    margin-top: 10px;
+}
+
+textarea.input-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    height: 100px;
+    /* Adjust height for multi-line input */
+}
+
+.confirm-button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    background-color: #11DDB1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.confirm-button:hover {
+    background-color: #0fbfa3;
 }
 
 .file-upload button {
@@ -434,30 +557,24 @@ body {
     background-color: #0fbfa3;
 }
 
-/* Styles for registered entries */
 .registered-entries {
+    position: relative;
     padding: 20px;
 }
 
-.entries-list {
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#entriesList {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 20px;
-}
-
-.entry-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #eae9e9;
-    border-radius: 12px;
-    padding: 12px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    gap: 20px;
-    width: 150%;
-    max-width: 800px; 
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .entry-category {
@@ -466,26 +583,52 @@ body {
     color: #fff;
     padding: 5px 10px;
     border-radius: 8px;
-    margin-right: 10px;
 }
 
-.entry-name, .entry-dates {
-    font-size: 14px;
+.entry-name {
+    font-size: 16px;
     color: #333;
-    flex: 1;
+}
+
+.entry-dates {
+    font-size: 14px;
+    color: #666;
+    margin-left: auto;
 }
 
 .entry-actions button {
-    background-color: transparent;
-    border: none;
-    font-size: 18px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.edit-button {
-    color: #11ddb1;
+.delete-button {
+    background-color: #ff4d4d;
 }
 
-.delete-button {
-    color: #ff4d4d;
+.edit-button {
+    background-color: #11ddb1;
+}
+
+#addButton {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #11ddb1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addButton:hover {
+    background-color: #0fbfa3;
 }
