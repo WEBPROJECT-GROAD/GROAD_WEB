@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/resumeboard.css">
     <link rel="stylesheet" href="../header.css">
+    <script type="module" src="js/resumeboard.js"></script>
     <title>G-road</title>
 </head>
 
@@ -14,7 +15,8 @@
         <header>
             <div class="header-container">
                 <div class="logo-section">
-                    <a href="../main/index.html"><img src="../roadmap/groad.png" alt="G-road Logo" class="logo-image"></a>
+                    <a href="../main/index.html"><img src="../roadmap/groad.png" alt="G-road Logo"
+                            class="logo-image"></a>
                 </div>
                 <div class="search-section">
                     <button class="search-button"><img src="../roadmap/search_icon.png" alt="searchbtn"></button>
@@ -59,44 +61,20 @@
                     <p>필터 설정을 하면 내가 원하는 이력서만 볼 수 있어요!</p>
                 </div>
                 <div class="sort-options">
-                    <button data-sort="latest" class="active">최신 등록 순 </button>
-                    <button data-sort="recommendations">추천 많은 순 </button>
-                    <button data-sort="scrap">스크랩 많은 순 </button>
+                    <button class="sort-btn btnActive" data-sort="latest" onclick="sortProfiles('latest',this)">최신 등록 순 </button>
+                    <button class="sort-btn " data-sort="recommends" onclick="sortProfiles('recommends',this)">추천 많은 순 </button>
+                    <button class="sort-btn " data-sort="scraps" onclick="sortProfiles('scraps',this)">스크랩 많은 순 </button>
                 </div>
             </div>
-            <section id="resumelist">  
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <!-- 4 -->
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <!-- 8 -->
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <!-- 12 -->
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <!-- 16 -->
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <!-- 20 -->
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <div class="prf-card"></div>
-                <!-- 24 -->
+            <button id="prevBtn" onclick="navigate(-1)" disabled><img src="../main/img/btn_to.png" alt="prev"></button>
+            <button id="nextBtn" onclick="navigate(1)"><img src="../main/img/btn_to.png" alt="next"></button>
+            <section id="container">
+                <!-- <div class="prf-card"></div> -->
             </section>
+            <div>
+            </div>
         </main>
     </div>
 </body>
+
 </html>
