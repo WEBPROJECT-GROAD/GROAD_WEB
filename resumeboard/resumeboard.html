@@ -24,7 +24,7 @@
                     <button class="filter-button"><img src="../roadmap/filter_icon.png" alt="filterbtn"></button>
                 </div>
                 <div class="profile-links">
-                    <b><a href="#">로그아웃</a><a href="#">마이페이지</a></b>
+                    <b><a href="#">로그아웃</a><a href="#" onclick="openSidebar()">마이페이지</a></b>
                 </div>
             </div>
             <nav class="nav-links">
@@ -52,6 +52,32 @@
                 </div>
             </nav>
         </header>
+
+        <div id="myPageSidebar" class="sidebar">
+            <div class="sidebar-content">
+                <button class="close-sidebar" onclick="closeSidebar()">×</button>
+                <div class="user-info">
+                    <div class="user-icon">
+                        <img src="img/myicon.png" alt="User Icon">
+                    </div>
+                    <h2><span class="user-name">정후 님</span> 안녕하세요!</h2>
+                </div>
+                <div class="logout-button-container">
+                    <button class="logout-button">로그아웃</button>
+                </div>
+                <div class="divider"></div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="#">나의 정보</a></li>
+                        <li><a href="../myresume/myresume.html">나의 이력서</a></li>
+                        <li><a href="../roadmap/roadmap.html">나의 로드맵</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>        
+        <div id="sidebarOverlay" class="sidebar-overlay">
+        </div>
+
         <main class="content">
             <div class="filter-bar">
                 <div class="filter-wr">

@@ -22,7 +22,6 @@ function showTab2(tabId) {
 }
 
 // 사이드 바 마이페이지 함수
-
 function openSidebar() {
     document.getElementById('myPageSidebar').classList.add('active');
     document.getElementById('sidebarOverlay').classList.add('active');
