@@ -10,11 +10,13 @@ window.sortProfiles = sortProfiles;
 window.renderProfiles = renderProfiles;
 window.backToProfiles = backToProfiles;
 window.navigate = navigate;
+window.reviewContents =reviewContents;
 
 let currentIndex = 0;
 const pageSize = 8; // 한 페이지 프로필 수
 
 let isDetailView = false;
+let isReviewContents = false;
 
 
 // 정렬 버튼
@@ -103,6 +105,7 @@ function renderProfileDetails(profile) {
 
     container.innerHTML = `
         <button id="page-back" onclick="backToProfiles()"> < 이력서 목록 </button>
+        <button id="toReviewBtn" onclick = "reviewContents()">후기 작성하기</button>
         <div class="profileDetail">
             <img src="img/prf.png" alt="${profile.name}">
             <div class="info">
@@ -194,6 +197,62 @@ function backToProfiles() {
     const filterBar = document.querySelector('.filter-bar');
     filterBar.classList.remove('hidden');
 }
+
+
+function reviewContents(){
+    const container = document.getElementById('container');
+    const filterBar = document.querySelector('.filter-bar');
+    filterBar.classList.add('hidden');
+    container.innerHTML = '';
+    isReviewContents = true;
+
+    container.innerHTML = `
+    <div id="reviewConWrap">
+        <div class= "wrTop reviewTextFont">후기 작성하기</div>
+        <input id="reviewTitleInput" type ="text" placeholder="제목을 입력해주세요."></input>
+        <div class= "reviewTextFont">카테고리 설정</div>
+        <div class= "checkBoxWrap">
+            <label class="checkBox">
+                <input type="radio" name= "category" value="대외활동" checked>
+                <span>대외활동</span>
+            </label>
+            <label class="checkBox">
+                <input type="radio" name= "category" value="공모전 후기" checked>
+                <span>공모전 후기</span>
+            </label>
+            <label class="checkBox">
+                <input type="radio" name= "category" value="자격증 / 어학 후기" checked>
+                <span>자격증 / 어학 후기</span>
+            </label>
+            <label class="checkBox">
+                <input type="radio" name= "category" value="인턴 / 취업 후기" checked>
+                <span>인턴 / 취업 후기</span>
+            </label>
+            <label class="checkBox">
+                <input type="radio" name= "category" value="창업 후기" checked>
+                <span>창업 후기</span>
+            </label>
+        </div>
+        <div class= "reviewTextFont">내용 입력</div>
+        <input id="reviewInput" type="text" placeholder="후기 내용을 입력해주세요. (최대 255자)">
+        <button id="reviewBtn">등록하기</button>
+    </div>
+    `;
+    const inputField = document.getElementById('reviewTitleInput');
+
+    inputField.addEventListener('focus', function () {
+        this.dataset.placeholder = this.placeholder; 
+        this.placeholder = ''; 
+    });
+
+    inputField.addEventListener('blur', function () {
+        this.placeholder = this.dataset.placeholder;
+    });
+    
+}
+
+
+
 
 
 
