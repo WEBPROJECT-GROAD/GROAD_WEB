@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-road</title>
+    <link rel="stylesheet" href="roadmap.css">
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../footer.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="../main/index.html"><img src="../roadmap/groad.png" alt="G-road Logo" class="logo-image"></a>
+            </div>
+            <div class="search-section">
+                <button class="search-button"><img src="../roadmap/search_icon.png" alt="searchbtn"></button>
+                <input type="text" placeholder="검색어를 입력해주세요">
+                <button class="filter-button"><img src="../roadmap/filter_icon.png" alt="filterbtn"></button>
+            </div>
+            <div class="profile-links">
+                <b><a href="#">로그아웃</a><a href="#" onclick="openSidebar()">마이페이지</a></b>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <div class="dropdown inactive">
+                <a href="../main/index.html">홈</a>
+            </div>
+            <div class="dropdown inactive">
+                <a href="../resumeboard/resumeboard.html">이력서 게시판</a>
+                <div class="dropdown-content">
+                    <li><a href="#">취업 / 인턴</a></li>
+                    <li><a href="#">대외활동 / 공모전</a></li>
+                    <li><a href="#">자격 / 어학</a></li>
+                    <li><a href="#">창업</a></li>
+                </div>
+            </div>
+            <div class="dropdown inactive">
+                <a href="#">후기 게시판</a>
+                <div class="dropdown-content">
+                    <li><a href="#">토큰 구매</a></li>
+                    <li><a href="#">네트워킹 파티</a></li>
+                </div>
+            </div>
+            <div class="dropdown inactive">
+                <a href="../roadmap/roadmap.html">G-path</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="myPageSidebar" class="sidebar">
+        <div class="sidebar-content">
+            <button class="close-sidebar" onclick="closeSidebar()">×</button>
+            <div class="user-info">
+                <div class="user-icon">
+                    <img src="myicon.png" alt="User Icon">
+                </div>
+                <h2><span class="user-name">정후 님</span> 안녕하세요!</h2>
+            </div>
+            <div class="logout-button-container">
+                <button class="logout-button">로그아웃</button>
+            </div>
+            <div class="divider"></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../mypage/mypage.html">나의 정보</a></li>
+                    <li><a href="../myresume/myresume.html">나의 이력서</a></li>
+                    <li><a href="../roadmap/roadmap.html">나의 로드맵</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>        
+    <div id="sidebarOverlay" class="sidebar-overlay">
+    </div>
+
+    <main class="content-container">
+        <div class="main-content">
+        </div>
+    </main>
