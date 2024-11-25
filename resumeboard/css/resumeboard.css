@@ -172,13 +172,16 @@ button {
     display: none;
 }
 
+
+
 /* detailView */
 .hidden {
     display: none;
 }
 
 .profileDetail {
-    margin-top: 40PX;
+    margin-top: 50PX;
+    position: relative;
     display: flex;
     width: 880px;
     height: 150px;
@@ -209,26 +212,45 @@ button {
     padding-bottom: 20px;
 }
 
+/* detailContents - buttons */
 #page-back {
     font-size: 13px;
     position: absolute;
-    top: 27%;
+    top: 28%;
     left: 260px;
     background: none;
     border: none;
-    color: #9F9F9F
+    color: #9F9F9F;
+    font-weight: bold;
 }
+
+#toReviewBtn {
+    position: absolute;
+    top: 27%;
+    right: 260px;
+    background-color: #fff;
+    color: #9F9F9F;
+    border: 2px solid #17e0b4a6;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 13px;
+    height: 30px;
+    width: 100px;
+    font-weight: bold;
+}
+
+/*  */
 
 .detailPt h4,
 .qawrap {
     color: #9F9F9F;
     padding-bottom: 20px;
-    display:block;
+    display: block;
     text-align: left !important;
-    
+
 }
 
-.pf-block{
+.pf-block {
     box-shadow: 0px 0px 12px 0px #0000001A;
     border-radius: 12px;
     display: flex;
@@ -240,6 +262,7 @@ button {
 
 
 }
+
 .qa-block {
     box-shadow: 0px 0px 12px 0px #0000001A;
     border-radius: 12px;
@@ -252,7 +275,8 @@ button {
 
 
 }
-.a-block{
+
+.a-block {
     box-shadow: 0px 0px 12px 0px #0000001A;
     border-radius: 12px;
     display: flex;
@@ -262,8 +286,16 @@ button {
     margin-bottom: 25px;
     padding: 0 38px;
 }
-.answerWrap{display: flex;}
-.answerWrap > img{ width: 50px; height: 45px; margin: 0 38px;}
+
+.answerWrap {
+    display: flex;
+}
+
+.answerWrap>img {
+    width: 50px;
+    height: 45px;
+    margin: 0 38px;
+}
 
 .detailText {
 
@@ -279,19 +311,37 @@ button {
     font-weight: bold;
 }
 
-.pf-block >p{ color:#777777;
+.pf-block>p {
+    color: #777777;
     padding-left: 70px;
     font-weight: bold;
 }
 
-.qa-block p, .answerWrap p {color:#777777;
+.qa-block p,
+.answerWrap p {
+    color: #777777;
     padding-left: 30px;
-    font-weight: bold;}
-.qaName{color: #11DDB1!important;}
-.qa-block img , .qa-prf{width: 62px; height: 65px;}
+    font-weight: bold;
+}
 
-.qaText{display: inline-block; }
-.qaText p{padding-top: 5px; padding-bottom: 3px;}
+.qaName {
+    color: #11DDB1 !important;
+}
+
+.qa-block img,
+.qa-prf {
+    width: 62px;
+    height: 65px;
+}
+
+.qaText {
+    display: inline-block;
+}
+
+.qaText p {
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
 
 /* 질문 추가 */
 #askBlock {
@@ -301,8 +351,9 @@ button {
     display: flex;
     width: 880px;
 }
+
 #questionInput {
-    
+
     height: 125px;
     width: 880px;
     box-shadow: 0px 0px 12px 0px #0000001A;
@@ -313,10 +364,11 @@ button {
     outline: none;
 
 }
+
 #submitQuestion {
-    position: absolute; 
+    position: absolute;
     top: 35%;
-    right: 50px;  
+    right: 50px;
     height: 35px;
     width: 100px;
     background-color: #11DDB1;
@@ -327,4 +379,119 @@ button {
     font-size: 13px;
     box-shadow: 0px 0px 8px 0px #0BDDB0;
 
+}
+
+
+
+/* reviewContents 이력서게시판 - 상세이력서 후기 작성하기 */
+.reviewConWrap {
+    display: inline-block;
+    position: relative;
+}
+
+.wrTop {
+    padding-top: 20px;
+
+}
+
+.reviewTextFont {
+    margin-top: 5px;
+    color: #9F9F9F;
+    padding-bottom: 5px;
+    font-size: 16px;
+    display: block;
+    text-align: left !important;
+    font-weight: bold;
+}
+
+#reviewTitleInput {
+    width: 880px;
+    height: 45px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 34px;
+    border: none;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    color: #B3B3B3;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+
+}
+
+.checkBoxWrap {
+    display: flex;
+    gap: 13px;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.checkBox {
+    position: relative;
+}
+
+.checkBox input {
+    display: none;
+}
+
+.checkBox span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #00e2b4;
+    border-radius: 25px;
+    color: #00e2b4;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkBox input:checked+span {
+    background-color: #00e2b4;
+    color: white;
+    border-color: #00e2b4;
+    box-shadow: 0px 0px 8px 0px #0BDDB0;
+
+}
+
+#reviewInput {
+    width: 880px;
+    height: 305px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 34px;
+    border: none;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    color:#B3B3B3;
+    font-size: 14px;
+    font-weight: bold;
+    outline:none;
+    text-align: left;
+    vertical-align: top;
+}
+
+#reviewInput ::placeholder{
+position: relative;
+top: 0 ;
+}
+
+#reviewBtn{
+    display: block;
+    position: absolute;
+    left: 50%;
+    border: 2px solid #00e2b4;
+    border-radius: 25px;
+    color: #00e2b4;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 35px;
+    background-color: #fff;
+}
+
+#reviewConWrap ::placeholder{
+    color: #B3B3B3;
 }
