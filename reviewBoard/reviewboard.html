@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-road</title>
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="css/reviewboard.css">
+    <script type="module" src="js/reviewboard.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div class="header-container">
+                <div class="logo-section">
+                    <a href="../main/index.html"><img src="../roadmap/groad.png" alt="G-road Logo"
+                            class="logo-image"></a>
+                </div>
+                <div class="search-section">
+                    <button class="search-button"><img src="../roadmap/search_icon.png" alt="searchbtn"></button>
+                    <input type="text" placeholder="검색어를 입력해주세요">
+                    <button class="filter-button"><img src="../roadmap/filter_icon.png" alt="filterbtn"></button>
+                </div>
+                <div class="profile-links">
+                    <b><a href="#">로그아웃</a><a href="#">마이페이지</a></b>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <div class="dropdown">
+                    <a href="../main/index.html" class="inactive">홈</a>
+                </div>
+                <div class="dropdown inactive">
+                    <a href="../resumeboard/resumeboard.html">이력서 게시판</a>
+                </div>
+                <div class="dropdown active">
+                    <a href="#">후기 게시판</a>
+                    <div class="dropdown-content">
+                        <li><a href="#">취업 / 인턴</a></li>
+                        <li><a href="#">대외활동 / 공모전</a></li>
+                        <li><a href="#">자격 / 어학</a></li>
+                        <li><a href="#">창업</a></li>
+                    </div>
+                </div>
+                <div class="dropdown inactive">
+                    <a href="../roadmap/roadmap.html">G-path</a>
+                    <div class="dropdown-content">
+                        <li><a href="#">토큰 구매</a></li>
+                        <li><a href="#">네트워킹 파티</a></li>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="content">
+            <div class="contentTab">
+                <div class="tabOptions">
+                    <button class="sort-tab tabActive" data-sort="activity1" onclick="sortReviews('activity1',this)">대외활동</button>
+                    <button class="sort-tab" data-sort="activity2" onclick="sortReviews('activity2',this)">공모전 후기</button>
+                    <button class="sort-tab" data-sort="certificate" onclick="sortReviews('certificate',this)">자격증/어학 후기</button>
+                    <button class="sort-tab" data-sort="job" onclick="sortReviews('job',this)">인턴/취업 후기</button>
+                    <button class="sort-tab" data-sort="startup" onclick="sortReviews('startup',this)">창업 후기</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
