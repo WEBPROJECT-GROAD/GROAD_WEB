@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-road</title>
+    <link rel="stylesheet" href="mypage.css">
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../footer.css">
+    <script src="mypage.js" defer></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <a href="../main/index.html"><img src="../roadmap/groad.png" alt="G-road Logo" class="logo-image"></a>
+            </div>
+            <div class="search-section">
+                <button class="search-button"><img src="../roadmap/search_icon.png" alt="searchbtn"></button>
+                <input type="text" placeholder="검색어를 입력해주세요">
+                <button class="filter-button"><img src="../roadmap/filter_icon.png" alt="filterbtn"></button>
+            </div>
+            <div class="profile-links">
+                <b><a href="#">로그아웃</a><a href="#" onclick="openSidebar()">마이페이지</a></b>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <div class="dropdown inactive">
+                <a href="../main/index.html">홈</a>
+            </div>
+            <div class="dropdown inactive">
+                <a href="../resumeboard/resumeboard.html">이력서 게시판</a>
+                <div class="dropdown-content">
+                    <li><a href="#">취업 / 인턴</a></li>
+                    <li><a href="#">대외활동 / 공모전</a></li>
+                    <li><a href="#">자격 / 어학</a></li>
+                    <li><a href="#">창업</a></li>
+                </div>
+            </div>
+            <div class="dropdown inactive">
+                <a href="#">후기 게시판</a>
+                <div class="dropdown-content">
+                    <li><a href="#">토큰 구매</a></li>
+                    <li><a href="#">네트워킹 파티</a></li>
+                </div>
+            </div>
+            <div class="dropdown inactive">
+                <a href="../roadmap/roadmap.html">G-path</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="myPageSidebar" class="sidebar">
+        <div class="sidebar-content">
+            <button class="close-sidebar" onclick="closeSidebar()">×</button>
+            <div class="user-info">
+                <div class="user-icon">
+                    <img src="myicon.png" alt="User Icon">
+                </div>
+                <h2><span class="user-name">정후 님</span> 안녕하세요!</h2>
+            </div>
+            <div class="logout-button-container">
+                <button class="logout-button">로그아웃</button>
+            </div>
+            <div class="divider"></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="../mypage/mypage.html">나의 정보</a></li>
+                    <li><a href="../myresume/myresume.html">나의 이력서</a></li>
+                    <li><a href="../roadmap/roadmap.html">나의 로드맵</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Main Content Section -->
+    <div class="content-container">
+        <!-- Profile Section -->
+        <div class="user-info-card">
+            <div class="profile-container">
+                <img src="../mypage/mypage_default.png" alt="Profile Camera" class="camera-icon">
+                <h3>이름 : 안정후</h3>
+                <p>이메일 : austinan@naver.com</p>
+                <p>회원가입일 : 2024년 12월 1일</p>
+            </div>
+        </div>
+
+        <div class="my-info-section">
+            <h4>나의 정보</h4>
+            <div class="info-grid">
+                <p><span class="field-label">대학교:</span> <span id="university">없음</span></p>
+                <p><span class="field-label">학과:</span> <span id="department">없음</span></p>
+                <p><span class="field-label">입학년도:</span> <span id="admissionYear">없음</span></p>
+                <p><span class="field-label">학년:</span> <span id="grade">없음</span></p>
+                <p><span class="field-label">진로 분야:</span> <span id="careerField">없음</span></p>
+                <p><span class="field-label">희망 기업:</span> <span id="desiredCompany">없음</span></p>
+            </div>
+            <button id="addInfoBtn">추가하기</button>
+        </div>
+
+        <!-- 자기소개서 섹션 -->
+        <div class="self-introduction">
+            <h4>자기소개서</h4>
+            <p id="selfIntroductionText">자기소개서를 입력해주세요!</p>
+            <button id="addSelfIntroBtn">추가하기</button>
+        </div>
+    </div>
+
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <button id="closePopupBtn" class="close-popup-btn"></button>
+            <h3>나의 정보 추가</h3>
+            <form id="infoForm">
+                <label>대학교</label>
+                <input type="text" id="universityInput" placeholder="대학교를 입력해주세요.">
+                <label>학과</label>
+                <input type="text" id="departmentInput" placeholder="학과를 입력해주세요.">
+                <label>입학년도</label>
+                <input type="text" id="admissionYearInput" placeholder="입학년도를 입력해주세요.">
+                <label>학년</label>
+                <input type="text" id="gradeInput" placeholder="학년을 입력해주세요.">
+                <label>진로 분야</label>
+                <input type="text" id="careerFieldInput" placeholder="진로 분야를 입력해주세요.">
+                <label>희망 기업</label>
+                <input type="text" id="desiredCompanyInput" placeholder="희망 기업을 입력해주세요.">
+                <button type="button" id="saveInfoBtn">확인</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 자기소개서 팝업 -->
+    <div id="selfIntroPopup" class="popup hidden">
+        <div class="popup-content">
+            <button id="closeSelfIntroPopupBtn" class="close-popup-btn">×</button>
+            <h3>자기소개서 추가</h3>
+            <textarea id="selfIntroductionInput" placeholder="자기소개서를 입력해주세요." rows="8"></textarea>
+            <button type="button" id="saveSelfIntroBtn">확인</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
