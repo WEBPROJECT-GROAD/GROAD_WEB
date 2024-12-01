@@ -50,17 +50,13 @@ function sortReviews(sortHow,clickedButton) {
     } else if (sortHow === 'scraps'){
         reviewState.reviews.sort((a,b)=>b.scraps - a.scraps);
     }
-
-  
     currentIndex = 0;
 
     const filteredReviews = activeCategory === 'all'
         ? reviewState.reviews
         : reviewState.reviews.filter(review => review.category === activeCategory);
 
-
     renderFilteredReviews(filteredReviews);
-
     updateActiveButton(clickedButton);
 }
 
@@ -103,7 +99,7 @@ function renderFilteredReviews(filteredReviews){
                 ${review.timestamp}
             </div>
             <div id="reviewInfo">
-                조회 추천 ${review.recommends} 스크랩${review.scraps}
+                조회 ${review.views} 추천 ${review.recommends} 스크랩 ${review.scraps}
             </div>
             <div>
         </div>            
@@ -147,7 +143,7 @@ function renderReviewDetails(review){
                 <div id="detailInfo">
                     <h4>${review.title}</h4>
                     <p>${review.timestamp}</p>
-                    <p>조회$ 추천 ${review.recommends} 스크랩${review.scraps}</p>
+                    <p>조회 ${review.views} 추천 ${review.recommends} 스크랩 ${review.scraps}</p>
                 </div>
             </div>
         </div>
