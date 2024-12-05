@@ -322,6 +322,7 @@ body{background-color: #f5f5f5;}
     justify-content: center;
     align-items: center;
     gap: 90px;
+    background-color: #fff;
 }
 
 .profileDetail>img {
@@ -380,6 +381,7 @@ body{background-color: #f5f5f5;}
     display: block;
     text-align: left !important;
 
+
 }
 
 .pf-block {
@@ -388,6 +390,7 @@ body{background-color: #f5f5f5;}
     display: flex;
     align-items: center;
     width: 880px;
+    background-color: #fff;
     height: 100PX;
     margin-bottom: 25px;
     padding: 0 38px;
@@ -403,6 +406,7 @@ body{background-color: #f5f5f5;}
     width: 880px;
     height: 125PX;
     margin-bottom: 25px;
+    background-color: #fff;
     padding: 0 38px;
 
 
@@ -413,6 +417,7 @@ body{background-color: #f5f5f5;}
     border-radius: 12px;
     display: flex;
     align-items: center;
+    background-color: #fff;
     width: 755px;
     height: 125PX;
     margin-bottom: 25px;
@@ -430,7 +435,6 @@ body{background-color: #f5f5f5;}
 }
 
 .detailText {
-
     background-color: #000;
     color: white;
     border-radius: 46px;
@@ -485,7 +489,6 @@ body{background-color: #f5f5f5;}
 }
 
 #questionInput {
-
     height: 125px;
     width: 880px;
     box-shadow: 0px 0px 12px 0px #0000001A;
@@ -561,6 +564,7 @@ body{background-color: #f5f5f5;}
 
 .checkBox {
     position: relative;
+    
 }
 
 .checkBox input {
@@ -573,6 +577,7 @@ body{background-color: #f5f5f5;}
     border: 2px solid #00e2b4;
     border-radius: 25px;
     color: #00e2b4;
+    background-color: #fff;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
