@@ -11,6 +11,8 @@ window.sortReviews = sortReviews;
 window.renderFilteredReviews = renderFilteredReviews;
 window.activeReview = activeReview;
 window.backToReviews = backToReviews;
+window.openSidebar =openSidebar;
+window.closeSidebar=closeSidebar;
 
 let currentIndex = 0;
 let activeCategory = null;
@@ -180,3 +182,18 @@ document.getElementById('container').addEventListener('click', (event) => {
             event.target.classList.toggle('detailbtnActive');
     }
 });
+
+
+// 사이드 바 마이페이지 함수
+function openSidebar() {
+    document.getElementById('myPageSidebar').classList.add('active');
+    document.getElementById('sidebarOverlay').classList.add('active');
+}
+
+function closeSidebar() {
+    document.getElementById('myPageSidebar').classList.remove('active');
+    document.getElementById('sidebarOverlay').classList.remove('active');
+}
+
+document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+

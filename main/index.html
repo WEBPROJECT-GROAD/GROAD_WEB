@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="../header.css">
     <link rel="stylesheet" href="../footer.css">
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -34,22 +34,24 @@
                     </div>
                     <div class="dropdown inactive">
                         <a href="../resumeboard/resumeboard.html">이력서 게시판</a>
+                        
+                    </div>
+                    <div class="dropdown inactive">
+                        <a href="../reviewBoard/reviewboard.html">후기 게시판</a>
                         <div class="dropdown-content">
                             <li><a href="#">취업 / 인턴</a></li>
                             <li><a href="#">대외활동 / 공모전</a></li>
                             <li><a href="#">자격 / 어학</a></li>
                             <li><a href="#">창업</a></li>
                         </div>
+                        
                     </div>
                     <div class="dropdown inactive">
-                        <a href="#">후기 게시판</a>
+                        <a href="../roadmap/roadmap.html">G-path</a>
                         <div class="dropdown-content">
                             <li><a href="#">토큰 구매</a></li>
                             <li><a href="#">네트워킹 파티</a></li>
                         </div>
-                    </div>
-                    <div class="dropdown inactive">
-                        <a href="../roadmap/roadmap.html">G-path</a>
                     </div>
                 </nav>
             </header>
@@ -78,7 +80,7 @@
             </div>        
             <div id="sidebarOverlay" class="sidebar-overlay">
             </div>
-
+            <div id="container"></div>
             <main class="content-container">
                 <div class="block">
                     <div>
@@ -103,7 +105,7 @@
                             </div>
                             <div class="con1-con" id="views" style="display: block;">
                                 <div class="best">
-                                    <div class="pfs-best">
+                                    <div class="pfs-best clickPrf" data-id="1">
                                         <div class="likes-count">
                                             <p>👍5 </p>
                                         </div>
@@ -116,7 +118,7 @@
                                         </ul>
                                         <div class="pfs-btn-to-b"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-best">
+                                    <div class="pfs-best clickPrf" data-id="2">
                                         <div class="likes-count">
                                             <p>👍2 </p>
                                         </div>
@@ -131,30 +133,30 @@
                                     </div>
                                 </div>
                                 <div class="pfs">
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="3">
                                         <img src="../main/img/pfs_1_3.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">김*지 (27)</p>
                                         <ul class="pfs-list"><li>경영학과 3학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="4">
                                         <img src="../main/img/pfs_1_4.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">박*아 (24)</p>
                                         <ul class="pfs-list"><li>정밀화학과 4학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="5">
                                         <img src="../main/img/pfs_1_5.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">안*후 (25)</p>
                                         <ul class="pfs-list"><li>전자미디어과 3학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
                                 </div>
-                                <div class="more"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more"><a href="../resumeboard/resumeboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                             <div class="con1-con" id="likes" style="display: none;">
                                 <div class="best">
-                                    <div class="pfs-best">
+                                    <div class="pfs-best clickPrf" data-id="6">
                                         <img src="img/best.png" class="best-img" alt="best">
                                         <div class="likes-count">
                                             <p>👍34 </p>
@@ -167,7 +169,7 @@
                                         </ul>
                                         <div class="pfs-btn-to-b"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-best">
+                                    <div class="pfs-best clickPrf" data-id="7">
                                         <img src="img/best.png" class="best-img" alt="best">
                                         <div class="likes-count">
                                             <p>👍27 </p>
@@ -182,31 +184,31 @@
                                     </div>
                                 </div>
                                 <div class="pfs">
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="8">
                                         <img src="img/best.png" class="best-img" alt="best">
                                         <img src="../main/img/pfs_2_3.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">이*연 (24)</p>
                                         <ul class="pfs-list"><li>정밀화학과 4학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="9">
                                         <img src="../main/img/pfs_2_4.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">김*동 (24)</p>
                                         <ul class="pfs-list"><li>컴퓨터공학과 4학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="10">
                                         <img src="../main/img/pfs_2_5.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">신*빈 (24)</p>
                                         <ul class="pfs-list"><li>경영학과 4학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
                                 </div>
-                                <div class="more"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more"><a href="../resumeboard/resumeboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                             <div class="con1-con" id="scraps" style="display: none;">
                                 <div class="best">
-                                    <div class="pfs-best">
+                                    <div class="pfs-best clickPrf" data-id="11">
                                         <img src="img/best.png" class="best-img" alt="best">
                                         <img src="../main/img/pfs_3_1.png" alt="pfs" class="pfs-img-b">
                                         <p class="pfs-name-b">김*지 (25)</p>
@@ -216,7 +218,7 @@
                                         </ul>
                                         <div class="pfs-btn-to-b"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-best">
+                                    <div class="pfs-best clickPrf" data-id="12">
                                         <img src="../main/img/pfs_3_2.png" alt="pfs" class="pfs-img-b">
                                         <p class="pfs-name-b">최*진 (24)</p>
                                         <ul class="pfs-list">
@@ -227,26 +229,26 @@
                                     </div>
                                 </div>
                                 <div class="pfs">
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="13">
                                         <img src="../main/img/pfs_3_3.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">박*채 (24)</p>
                                         <ul class="pfs-list"><li>행정학과 4학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="14">
                                         <img src="../main/img/pfs_3_4.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">이*수 (25)</p>
                                         <ul class="pfs-list"><li>경영학과 4학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
-                                    <div class="pfs-nbest">
+                                    <div class="pfs-nbest clickPrf" data-id="15">
                                         <img src="../main/img/pfs_3_5.png" alt="pfs" class="pfs-img">
                                         <p class="pfs-name">안*영 (24)</p>
                                         <ul class="pfs-list"><li>경제학과 3학년</li><li>희망</li></ul>
                                         <div class="pfs-btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
                                 </div>
-                                <div class="more"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more"><a href="../resumeboard/resumeboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                         </section>
                     </div>
@@ -290,7 +292,7 @@
                                         <div class="btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>  
                                 </div>
-                                <div class="more" style="margin-top: 40px;"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more" style="margin-top: 40px;"><a href="../reviewBoard/reviewboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                             <div class="con2-con" id="activity" style="display: none;">
                                 <div class="reviews">
@@ -325,7 +327,7 @@
                                         <div class="btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
                                 </div>
-                                <div class="more" style="margin-top: 40px;"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more" style="margin-top: 40px;"><a href="../reviewBoard/reviewboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                             <div class="con2-con" id="certificate" style="display: none;">
                                 <div class="reviews">
@@ -361,7 +363,7 @@
                                         <div class="btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
                                 </div>
-                                <div class="more" style="margin-top: 40px;"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more" style="margin-top: 40px;"><a href="../reviewBoard/reviewboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                             <div class="con2-con" id="startup" style="display: none;">
                                 <div class="reviews">
@@ -392,11 +394,12 @@
                                         <div class="btn-to"><a href="#"><img src="img/btn_to.png"></a></div>
                                     </div>
                                 </div>
-                                <div class="more" style="margin-top: 40px;"><a href="#">더보기 <img src="img/btn_to.png"></a></div>
+                                <div class="more" style="margin-top: 40px;"><a href="../reviewBoard/reviewboard.html">더보기 <img src="img/btn_to.png"></a></div>
                             </div>
                         </section>
                     </div>
                 </section>
+                
             </main>
         </div>
         <footer id="ft">

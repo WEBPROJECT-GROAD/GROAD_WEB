@@ -403,3 +403,357 @@ body{font-family: 'Pretendard', sans-serif;
     display: flex;
     justify-content: flex-end;}
 .more a{font-size: 13px; color: #969696;}
+
+
+
+/* 상세 이력서 */
+#container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+
+
+/* detailView */
+.hidden {
+    display: none;
+}
+
+.profileDetail {
+    margin-top: 50PX;
+    position: relative;
+    display: flex;
+    width: 880px;
+    height: 150px;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    background-color: #fff;
+}
+
+.profileDetail>img {
+    width: 88px;
+    height: 93px;
+    margin-left: 170px;
+}
+
+.profileDetail .info {
+    font-size: 16px;
+    font-weight: bold;
+    color: #9F9F9F;
+    padding-top: 3px;
+}
+
+.profileDetail .N {
+    font-size: 12px;
+    color: #9F9F9F;
+    align-self: flex-end;
+    padding-bottom: 20px;
+    padding-right: 3px;
+    font-weight: bold;
+}
+
+/* detailContents - buttons */
+#page-back {
+    font-size: 13px;
+    position: absolute;
+    top: 28%;
+    left: 260px;
+    background: none;
+    border: none;
+    color: #9F9F9F;
+    font-weight: bold;
+}
+#toReviewBtn {
+    position: absolute;
+    top: 27%;
+    right: 260px;
+    background-color: #fff;
+    color: #9F9F9F;
+    border: 2px solid #17e0b4a6;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 13px;
+    height: 30px;
+    width: 100px;
+    font-weight: bold;
+}
+
+
+/*  */
+
+.detailPt h4,
+.qawrap {
+    color: #9F9F9F;
+    padding-bottom: 20px;
+    display: block;
+    text-align: left !important;
+
+
+}
+
+.pf-block {
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    width: 880px;
+    background-color: #fff;
+    height: 100PX;
+    margin-bottom: 25px;
+    padding: 0 38px;
+
+
+}
+
+.qa-block {
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    width: 880px;
+    height: 125PX;
+    margin-bottom: 25px;
+    background-color: #fff;
+    padding: 0 38px;
+
+
+}
+
+.a-block {
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    width: 755px;
+    height: 125PX;
+    margin-bottom: 25px;
+    padding: 0 38px;
+}
+
+.answerWrap {
+    display: flex;
+}
+
+.answerWrap>img {
+    width: 50px;
+    height: 45px;
+    margin: 0 38px;
+}
+
+.detailText {
+    background-color: #000;
+    color: white;
+    border-radius: 46px;
+    text-align: center;
+    justify-items: center;
+    height: 34px;
+    width: 125px;
+    font-size: 16px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+.pf-block>p {
+    color: #777777;
+    padding-left: 70px;
+    font-weight: bold;
+}
+
+.qa-block p,
+.answerWrap p {
+    color: #777777;
+    padding-left: 30px;
+    font-weight: bold;
+}
+
+.qaName {
+    color: #11DDB1 !important;
+}
+
+.qa-block img,
+.qa-prf {
+    width: 62px;
+    height: 65px;
+}
+
+.qaText {
+    display: inline-block;
+}
+
+.qaText p {
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+/* 질문 추가 */
+#askBlock {
+    margin-bottom: 20px;
+    position: relative;
+    height: 125px;
+    display: flex;
+    width: 880px;
+}
+
+#questionInput {
+    height: 125px;
+    width: 880px;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    border-radius: 12px;
+    border: none;
+    padding: 0 10px;
+    font-size: 16px;
+    outline: none;
+
+}
+
+#submitQuestion {
+    position: absolute;
+    top: 35%;
+    right: 50px;
+    height: 35px;
+    width: 100px;
+    background-color: #11DDB1;
+    color: #fff;
+    border: none;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 13px;
+    box-shadow: 0px 0px 8px 0px #0BDDB0;
+
+}
+
+
+/* reviewContents 이력서게시판 - 상세이력서 후기 작성하기 */
+.reviewConWrap {
+    display: inline-block;
+    position: relative;
+}
+
+.wrTop {
+    padding-top: 20px;
+
+}
+
+.reviewTextFont {
+    margin-top: 5px;
+    color: #9F9F9F;
+    padding-bottom: 5px;
+    font-size: 16px;
+    display: block;
+    text-align: left !important;
+    font-weight: bold;
+}
+
+#reviewTitleInput {
+    width: 880px;
+    height: 45px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 34px;
+    border: none;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    color: #B3B3B3;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+
+}
+
+.checkBoxWrap {
+    display: flex;
+    gap: 13px;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.checkBox {
+    position: relative;
+    
+}
+
+.checkBox input {
+    display: none;
+}
+
+.checkBox span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #00e2b4;
+    border-radius: 25px;
+    color: #00e2b4;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkBox input:checked+span {
+    background-color: #00e2b4;
+    color: white;
+    border-color: #00e2b4;
+    box-shadow: 0px 0px 8px 0px #0BDDB0;
+
+}
+
+#reviewInput {
+    width: 880px;
+    height: 305px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 34px;
+    border: none;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    color:#B3B3B3;
+    font-size: 14px;
+    font-weight: bold;
+    outline:none;
+    text-align: left;
+    vertical-align: top;
+}
+
+#reviewInput ::placeholder{
+position: relative;
+top: 0 ;
+}
+
+#reviewBtn{
+    display: block;
+    position: absolute;
+    left: 50%;
+    border: 2px solid #00e2b4;
+    border-radius: 25px;
+    color: #00e2b4;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 35px;
+    background-color: #fff;
+}
+
+#reviewConWrap ::placeholder{
+    color: #B3B3B3;
+}
+
+
+.clickPrf,button{
+cursor: pointer;}
+
+
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: flex !important;
+}

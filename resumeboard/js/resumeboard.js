@@ -9,8 +9,11 @@ import { profilesState } from './profiles.js';
 window.sortProfiles = sortProfiles;
 window.renderProfiles = renderProfiles;
 window.backToProfiles = backToProfiles;
+window.closeReview=closeReview;
 window.navigate = navigate;
 window.reviewContents =reviewContents;
+window.openSidebar =openSidebar;
+window.closeSidebar=closeSidebar;
 
 let currentIndex = 0;
 const pageSize = 8; // 한 페이지 프로필 수
@@ -114,26 +117,26 @@ function renderProfileDetails(profile) {
                 <p>희망진로 : ${profile.job}</p>
             </div>
             <div class="N">
-                <p>조회 N 추천${profile.recommends} 스크랩${profile.scraps}</p>
+                <p>조회 ${profile.views} 추천${profile.recommends} 스크랩${profile.scraps}</p>
             </div>
         </div>
         <div class="detailPt">
             <h4>portfolio</h4>
             <div class="pf-block">
                 <div class = detailText>대외활동</div>
-                <p>${profile.name}</p>
+                <p>${profile.d1}</p>
             </div>
             <div class="pf-block">
                 <div class = detailText>공모전</div>
-                <p>${profile.name}</p>
+                <p>${profile.d2}</p>
             </div>
             <div class="pf-block">
             <div class = detailText>해외경험</div>
-                <p>${profile.name}</p>
+                <p>${profile.d3}</p>
             </div>
             <div class="pf-block">
             <div class = detailText>어학/창업</div>
-                <p>${profile.name}</p>
+                <p>${profile.d4}</p>
             </div> 
         </div>
         <div class="detailQA">
@@ -198,6 +201,15 @@ function backToProfiles() {
     filterBar.classList.remove('hidden');
 }
 
+//리뷰 작성 버튼 // 
+function closeReview(){
+    isReviewContents = false;
+    renderProfiles();
+    const filterBar=document.querySelector('.filter-bar');
+    filterBar.classList.remove('hidden');
+    alert("후기가 등록되었습니다.")
+}
+
 
 function reviewContents(){
     const container = document.getElementById('container');
@@ -235,7 +247,7 @@ function reviewContents(){
         </div>
         <div class= "reviewTextFont">내용 입력</div>
         <input id="reviewInput" type="text" placeholder="후기 내용을 입력해주세요. (최대 255자)">
-        <button id="reviewBtn">등록하기</button>
+        <button id="reviewBtn" onclick="closeReview()">등록하기</button>
     </div>
     `;
     const inputField = document.getElementById('reviewTitleInput');

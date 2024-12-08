@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/resumeboard.css">
     <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../footer.css">
     <script type="module" src="js/resumeboard.js"></script>
     <title>G-road</title>
 </head>
@@ -33,6 +34,9 @@
                 </div>
                 <div class="dropdown active">
                     <a href="#">이력서 게시판</a>
+                </div>
+                <div class="dropdown inactive">
+                    <a href="../reviewBoard/reviewboard.html">후기 게시판</a>
                     <div class="dropdown-content">
                         <li><a href="#">취업 / 인턴</a></li>
                         <li><a href="#">대외활동 / 공모전</a></li>
@@ -41,17 +45,15 @@
                     </div>
                 </div>
                 <div class="dropdown inactive">
-                    <a href="#">후기 게시판</a>
+                    <a href="../roadmap/roadmap.html">G-path</a>
                     <div class="dropdown-content">
                         <li><a href="#">토큰 구매</a></li>
                         <li><a href="#">네트워킹 파티</a></li>
                     </div>
                 </div>
-                <div class="dropdown inactive">
-                    <a href="../roadmap/roadmap.html">G-path</a>
-                </div>
             </nav>
         </header>
+        
 
         <div id="myPageSidebar" class="sidebar">
             <div class="sidebar-content">
@@ -83,7 +85,7 @@
                 <div class="filter-wr">
                     <h5>이력서 24건</h5>
                     <button type="button" id="filterBtn"><img src="../resumeboard/img/filter.png" alt="filter"></button>
-                    <img style="transform: rotate(180deg);" src="../main/img/btn_to.png">
+                    <p></p>
                     <p>필터 설정을 하면 내가 원하는 이력서만 볼 수 있어요!</p>
                 </div>
                 <div class="sort-options">
@@ -100,7 +102,28 @@
             <div>
             </div>
         </main>
+        <footer id="ft">
+            <div class="ft-inner">
+                <nav class="ft-nav">
+                    <a href="#">이용안내</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">공지사항</a>
+                    <a href="#">자주 묻는 질문</a>
+                </nav>
+                <div class="ft-info">
+                    <h4>Team Info</h4>
+                    <ul>
+                        <li><span>CLASS NAME </span>웹프로그래밍 <span>&emsp; PROFESSOR </span>이길흥교수님</li>
+                        <li><span>TEAM LEADER </span>20101376 안정후</li>
+                        <li><span>TEAM MEMBER </span>20101742 박조아</li>
+                    </ul>
+                </div>
+                <p class="copy">Copyright © 2024 seoultech webprogramming G-ROAD. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
+    
 </body>
 
 </html>
