@@ -1,9 +1,37 @@
-window.onload = ()=>{
-    activeReview('all', document.querySelector('.sort-tab[data-category="all"]'));
-    sortReviews('latest', document.querySelector('.sort-btn[data-sort="latest"]'));
+window.onload = () => {
+    const category = getQueryParameter('category') || 'all'; 
+    const sortOption = getQueryParameter('sort') || 'latest';
 
+    // 카테고리 필터링
+    const categoryButton = document.querySelector(`.sort-tab[data-category="${category}"]`);
+    if (categoryButton) {
+        activeReview(category, categoryButton);
+    } else {
+        console.error(`Invalid category: ${category}`);
+        const defaultButton = document.querySelector('.sort-tab[data-category="all"]');
+        activeReview('all', defaultButton);
+    }
 
+    // 정렬 활성화
+    const sortButton = document.querySelector(`.sort-btn[data-sort="${sortOption}"]`);
+    if (sortButton) {
+        sortReviews(sortOption, sortButton);
+    } else {
+        console.error(`Invalid sort option: ${sortOption}`);
+        const defaultSortButton = document.querySelector('.sort-btn[data-sort="latest"]');
+        sortReviews('latest', defaultSortButton); 
+    }
 };
+
+
+
+function getQueryParameter(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const value = urlParams.get(param);
+    console.log(`Queried ${param}:`, value);
+    return value;
+}
+
 
 import {reviewState} from './reviewdata.js';
 
@@ -17,6 +45,9 @@ window.closeSidebar=closeSidebar;
 let currentIndex = 0;
 let activeCategory = null;
 let isDetailView = false;
+
+
+
 
 
 //리뷰 종류 탭

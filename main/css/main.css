@@ -458,7 +458,7 @@ body{font-family: 'Pretendard', sans-serif;
 }
 
 /* detailContents - buttons */
-#page-back {
+#page-back1 {
     font-size: 13px;
     position: absolute;
     top: 28%;
@@ -757,3 +757,57 @@ cursor: pointer;}
 .visible {
     display: flex !important;
 }
+
+ 
+/* 상세리뷰 */
+/* 상세리뷰 */
+.hidden {
+    display: none;
+}
+
+#detailReviewWrap{
+    display: block;
+    height: 670px;
+    width: 880px;
+    box-shadow: 0px 0px 12px 0px #0000001A;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    margin-top: 40px;
+    margin-bottom: 14px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+#page-back{border: none; position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    color: #D9D9D9;
+    background-color: #fff;
+    
+}
+#detailCategory{font-size: 11px; position: absolute; top: 0;top: 20px; left: 25px;
+    width: 76px; height: 26px;
+    color: white; font-weight: bold; background-color: #000 ; text-align: center; align-content: center; border-radius: 12px;
+}
+#detailTopWrap{display: flex;}
+#detailTop{display: flex; border-bottom: #D9D9D9 1px solid; height: 130px; width:80%; margin:50px auto 10px;}
+
+#detailPrf{flex: 1;}
+#detailPrf p{color:#11DDB1;font-size: 15px; font-weight: bold;}
+#detailPrf img{width: 80px; }
+
+#detailInfo{ flex:2; margin-left: 55px; text-align: left;}
+#detailInfo h4{font-size: 18px;color:#11DDB1;}
+#detailInfo p{font-size: 14px; color: #777777; margin-top: 10px;}
+#detailBottom{font-size: 15px; color: #777; margin: 30px 60px 0; text-align: left; line-height: 150%;}
+
+#detailBtns{position: absolute;    bottom: 55px; left: 37%;}
+.detail-Btns{
+    margin: 0 10px;color: #11DDB1; background-color: #fff; border:none;width: 100px;height: 35px; font-size: 15px; font-weight: bold; border-radius: 99px; box-shadow: 0px 0px 8px 0px #0BDDB0;}
+
+.detailbtnActive{background-color: #11DDB1;color: #fff;}
+
+.clickRv{cursor: pointer;}

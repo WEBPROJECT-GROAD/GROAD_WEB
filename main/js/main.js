@@ -1,6 +1,7 @@
 
 
 import { profilesState } from '../../resumeboard/js/profiles.js';
+import {reviewState} from '../../reviewBoard/js/reviewdata.js';
 
 window.showTab1 = showTab1;
 window.showTab2 = showTab2;
@@ -9,9 +10,11 @@ window.closeSidebar=closeSidebar;
 window.backToProfiles = backToProfiles;
 window.reviewContents = reviewContents;
 window.closeReview = closeReview;
+window.renderReviewDetails=renderReviewDetails;
 
 let isDetailView = false;
 let isReviewContents = false;
+let isDetailReview = false;
 
 
 function showTab1(tabId) {
@@ -112,7 +115,7 @@ function renderProfileDetails(profile) {
         : '<div class="qa-block"><p>Q&A가 없습니다.</p></div>';
 
     container.innerHTML = `
-        <button id="page-back" onclick="backToProfiles()"> < 이력서 목록 </button>
+        <button id="page-back1" onclick="backToProfiles()"> < 이력서 목록 </button>
         <button id="toReviewBtn" onclick="reviewContents()">후기 작성하기</button>
         <div class="profileDetail" style="margin-top:90px">
             <img src="../../resumeboard/img/prf.png" alt="${profile.name}">
@@ -198,6 +201,7 @@ function backToProfiles() {
     // 상태 초기화
     isDetailView = false;
     isReviewContents = false;
+    isDetailReview = false;
 
     container.style.removeProperty('display');
     contentsWrap.style.removeProperty('display');
@@ -223,12 +227,13 @@ function anonymizeName(name) {
 //상세 프로필 후기 작성 페이지
 function reviewContents() {
     const container = document.getElementById('container');
+    
     container.innerHTML = '';
     isReviewContents = true;
 
     container.innerHTML = `
     <div id="reviewConWrap">
-        <div class= "wrTop reviewTextFont">후기 작성하기</div>
+        <div class= "wrTop reviewTextFont" style="margin-top:30px">후기 작성하기</div>
         <input id="reviewTitleInput" type ="text" placeholder="제목을 입력해주세요."></input>
         <div class= "reviewTextFont">카테고리 설정</div>
         <div class= "checkBoxWrap">
@@ -272,6 +277,93 @@ function reviewContents() {
 }
 //리뷰 작성 버튼 // 
 function closeReview() {
+    const titleInput = document.getElementById('reviewTitleInput').value.trim();
+    const reviewInput = document.getElementById('reviewInput').value.trim();
+    const selectedCategory = document.querySelector('input[name="category"]:checked');
+
+    if (!titleInput) {
+        alert("제목을 입력해주세요.");
+        return;
+    }
+
+    if (!reviewInput) {
+        alert("후기 내용을 입력해주세요.");
+        return;
+    }
+
+    if (!selectedCategory) {
+        alert("카테고리를 선택해주세요.");
+        return;
+    }
+
+
     alert("후기가 등록되었습니다.")
     backToProfiles()
 }
+
+
+
+
+//hot 리뷰 - 상세리뷰
+// 세부 리뷰 화면
+function renderReviewDetails(review){
+    const contentsWrap = document.querySelector('.contents-wr');
+    const block = document.querySelector('.block');
+    const container = document.getElementById('container');
+
+    container.innerHTML=``;
+    isDetailReview = true;
+    container.style.display ='flex';
+    block.style.display='none';
+    contentsWrap.style.display='none';
+
+    container.innerHTML=`
+    <div id="detailReviewWrap" style="margin-top:70px">
+        <button id="page-back" onclick="backToProfiles()">X</button>
+        <div id="detailTopWrap">
+            <div id="detailCategory">${review.catName}</div>
+            <div id="detailTop">
+                <div id="detailPrf">
+                    <img src="../resumeBoard/img/prf.png">
+                        <p>${review.name}</p>
+                </div>
+                <div id="detailInfo">
+                    <h4>${review.title}</h4>
+                    <p>${review.timestamp}</p>
+                    <p>조회 ${review.views} 추천 ${review.recommends} 스크랩 ${review.scraps}</p>
+                </div>
+            </div>
+        </div>
+        <div id="detailBottom">
+            <p>${review.con}</p>
+        </div>
+        <div id="detailBtns">
+            <button class="detail-Btns">추천하기</button>
+            <button class="detail-Btns">스크랩</button>
+        </div>
+    </div>
+    `;
+}
+
+// 상세 후기 //
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (event) => {
+        const clickedReview = event.target.closest('.clickRv');
+
+        if (clickedReview) {
+            const reviewId = parseInt(clickedReview.getAttribute('data-id')); 
+            const reviewData = reviewState.reviews.find(review => review.id === reviewId); 
+            if (reviewData) {
+                renderReviewDetails(reviewData); 
+            } else {
+                console.error(`Review with ID ${reviewId} not found.`);
+            }
+        }
+    });
+});
+
+document.getElementById('container').addEventListener('click', (event) => {
+    if (event.target.classList.contains('detail-Btns')) {
+        event.target.classList.toggle('detailbtnActive');
+}
+});
