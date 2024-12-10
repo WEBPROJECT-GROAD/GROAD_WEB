@@ -5,7 +5,6 @@
 * {margin: 0;padding: 0;box-sizing: border-box;}
 li{list-style: none;}
 a{text-decoration: none; color: inherit;}
-img{max-width: 100%; vertical-align: top;}
 table{width: 100%; border-collapse: collapse;}
 
 
@@ -65,7 +64,7 @@ header {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    /* color: #11DDB1;  */
+
 }
 
 .profile-links {
@@ -84,16 +83,16 @@ header {
 .nav-links {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    position: relative;
+    gap: 80px;
     font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 5px auto;
 }
 
 .nav-links .active {
     font-weight: 700;
     border-bottom: 2px solid #11DDB1;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
     color: #11DDB1;
 }
 
@@ -104,35 +103,46 @@ header {
 
 /* Dropdown Menu Styling */
 .dropdown {
+    cursor: pointer;
+    padding: 13px 45px;
     position: relative;
 }
 
+
+/* 기본 상태 */
 .dropdown-content {
-    opacity: 0;
-    display: none;
     position: absolute;
     top: 100%;
-    left: 50%; 
-    transform: translateX(-50%) translateY(-10px);
-    background-color: white;
-    min-width: 200px;
-    padding: 15px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    z-index: 1;
-    text-align: center;
-    gap: 15px; 
+    left: 30%;
+    transform: translateX(-50%);
+    display: none;
+    opacity: 0;
+    transform:  translateX(-50%) translateY(-15px);
+    visibility: hidden;
+    min-width: 200px; 
     transition: all 0.3s ease-in-out;
 }
 
-/* 부모에 호버했을 때 드롭다운 보이기 */
-.dropdown:hover .dropdown-content {
-    display: block; 
-    opacity: 1; /* 보이게 설정 */
-    transform: translateX(-50%) translateY(0); /* 제자리로 이동 */
-    visibility: visible; /* 표시 */
-    transition: all 1s;
+
+#whiteblock{
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 120px;
+    top: 100%;
+    transition: all 0.3s ease-in-out;
+    display: none;
+    border-radius: 18px;
 }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
 
 .dropdown-content a {
     color: #B3B3B3;
@@ -149,10 +159,7 @@ header {
     
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+
 
 /* Centered Content Container */
 .content-container {
