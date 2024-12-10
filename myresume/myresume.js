@@ -126,9 +126,26 @@ function clearPopupFields() {
     document.getElementById("endDate").value = "";
 }
 
-window.onclick = function (event) {
-    const modal = document.getElementById("popupModal");
-    if (event.target == modal) {
-        closePopup();
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log(document.getElementById('sidebarOverlay')); 
+    console.log(document.getElementById('popupModal')); 
+
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    } else {
+        console.error('Element with ID "sidebarOverlay" not found');
     }
-}
+
+    const popupModal = document.getElementById('popupModal');
+    if (popupModal) {
+        window.onclick = function (event) {
+            if (event.target === popupModal) {
+                closePopup();
+            }
+        };
+    } else {
+        console.error('Element with ID "popupModal" not found');
+    }
+});

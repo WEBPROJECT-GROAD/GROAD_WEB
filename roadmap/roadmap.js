@@ -43,27 +43,51 @@ function closeModal() {
     document.getElementById("activityModal").style.display = "none";
 }
 
-// Add activity to timeline
-function addActivityToTimeline() {
-    const activityType = document.getElementById("activityType").value;
-    const activityName = document.getElementById("activityName").value;
-    const startDate = document.getElementById("startDate").value;
-    const endDate = document.getElementById("endDate").value;
 
-    if (activityType && activityName && startDate && endDate) {
-        const activityList = document.getElementById("activity-list");
-        const newActivity = document.createElement("div");
-        newActivity.classList.add("activity-item");
-        newActivity.innerHTML = `
-            <strong>${activityType}: ${activityName}</strong><br>
-            <small>${startDate} ~ ${endDate}</small>
-        `;
 
-        activityList.appendChild(newActivity);
-        closeModal();
-    } else {
-        alert("모든 항목을 선택해주세요!");
+function isDateInSelectedPeriod(startDate, endDate) {
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const activityHeader = document.getElementById('activityHeader');
+
+    if (start > end) {
+        alert("시작 날짜가 종료 날짜보다 늦습니다. 다시 입력해주세요!");
+        return false; 
     }
+
+    if (!selectedPeriod || selectedPeriod === "") {
+        alert("학기를 먼저 선택해주세요!");
+        return false; // 학기 선택되지 않으면 false 반환
+    }
+
+    const startMonth = start.getMonth() + 1;
+    const endMonth = end.getMonth() + 1;
+
+    
+
+    // 상반기: 3월 ~ 8월
+    if (activityHeader.textContent.includes("상반기")) {
+        if (startMonth < 3 || startMonth > 8 || endMonth < 3 || endMonth > 8) {
+            alert("날짜가 상반기(3월 ~ 8월)에 맞지 않습니다.");
+            return false;
+        }
+        return true;
+    }
+
+    // 하반기: 9월 ~ 2월
+    else if (activityHeader.textContent.includes("하반기")) {
+        if (
+            (startMonth >= 9 || startMonth <= 2) &&
+            (endMonth >= 9 || endMonth <= 2)
+        ) {
+            return true;
+        } else {
+            alert("날짜가 하반기(9월 ~ 2월)에 맞지 않습니다.");
+            return false;
+        }
+    }
+    return false;
 }
 
 // Close the modal when clicking outside the modal content
@@ -90,14 +114,16 @@ function addActivityToTimeline() {
     const startDate = document.getElementById("startDate").value;
     const endDate = document.getElementById("endDate").value;
 
-    if (activityType && activityName && startDate && endDate) {
-        closeModal("activityModal");
-
-        // 타임라인에 막대 추가
-        createTimelineBar(startDate, endDate, activityType, activityName);
-    } else {
-        alert("모든 필드를 채워주세요.");
+    if (!activityType || !activityName || !startDate || !endDate) {
+        alert("모든 항목을 입력해주세요!");
+        return;
     }
+
+    if (!isDateInSelectedPeriod(startDate, endDate)) {
+        return; // 날짜 검증 실패 시 함수 종료
+    }
+    createTimelineBar(startDate, endDate, activityType, activityName);
+    closeModal("activityModal");
 }
 
 function createTimelineBar(startDate, endDate, activityType, activityName) {
@@ -108,32 +134,35 @@ function createTimelineBar(startDate, endDate, activityType, activityName) {
     const endMonth = new Date(endDate).getMonth() + 1;
 
     // Check if we are in 하반기 or 상반기
-    const isSecondHalf = selectedPeriod === '하반기';
+    // const isSecondHalf = selectedPeriod === '하반기';
     const monthsInSemester = 6;
-    let startOffset, endOffset;
+    let startOffset=0, endOffset=0;
 
-    if (isSecondHalf) {
-        // For 하반기: 9월 ~ 2월 (mapped as 9 to 14 internally)
-        startOffset = startMonth >= 9 ? startMonth - 9 : startMonth + 3; // Adjust months to 9-14 range
+    if (selectedPeriod.includes("하반기")) {
+        startOffset = startMonth >= 9 ? startMonth - 9 : startMonth + 3; // Adjust months to 9~14 range
         endOffset = endMonth >= 9 ? endMonth - 9 : endMonth + 3;
-    } else {
-        // For 상반기: 3월 ~ 8월
-        startOffset = startMonth - 3; // 3 to 8 maps directly to 0-5
+    }
+    // 상반기: 3월 ~ 8월
+    else if (selectedPeriod.includes("상반기")) {
+        startOffset = startMonth - 3; // 3월부터 시작
         endOffset = endMonth - 3;
     }
-
-    // Calculate position and width of the timeline bar in percentage
+    
+    
     const startPercentage = (startOffset / monthsInSemester) * 100;
     const endPercentage = ((endOffset + 1) / monthsInSemester) * 100; // +1 to include the end month
+    
+    if (startOffset < 0 || endOffset >= monthsInSemester) {
+        alert("날짜가 학기 범위를 초과합니다. 다시 입력해주세요.");
+        return;
+    }
 
     // Create Timeline bar element
     const timelineBar = document.createElement("div");
     timelineBar.classList.add("timeline-bar");
     timelineBar.innerHTML = `<strong>${activityType}: ${activityName}</strong><br><small>${startDate} ~ ${endDate}</small>`;
-
     timelineBar.style.marginLeft = `${startPercentage}%`;
     timelineBar.style.width = `${endPercentage - startPercentage}%`;
-
     // Default color and open color modal on click
     timelineBar.style.backgroundColor = "#7EECD5";
     timelineBar.addEventListener("click", function () {
@@ -147,9 +176,11 @@ function createTimelineBar(startDate, endDate, activityType, activityName) {
 function removeDefaultImage() {
     const defaultContainer = document.getElementById("default");
     if (defaultContainer) {
-        defaultContainer.innerHTML = ""; // 기본 이미지를 제거합니다.
+        defaultContainer.innerHTML = ""; 
     }
 }
+
+
 
 // Open color selection modal and keep track of the selected activity
 let selectedActivity = null;
@@ -178,7 +209,7 @@ function setColor(color) {
     closeModal('colorModal');
 }
 
-let selectedPeriod = '';
+let selectedPeriod="";
 
 // Function to open the semester modal
 function openSemesterModal() {
@@ -193,6 +224,10 @@ function closeModal(modalId) {
 function selectSemesterPeriod(period) {
     selectedPeriod = period;
 
+    if (!selectedPeriod) {
+        alert("학기를 선택하지 않았습니다!");
+        return;
+    }
     // Highlight the selected button
     document.querySelectorAll(".semester-option").forEach(button => {
         button.style.backgroundColor = "#11DDB1";
@@ -221,13 +256,14 @@ function addSemesterToList() {
         newSemester.addEventListener("click", function() {
             updateActivityHeader(newSemester.textContent);
             updateMonthLabels(newSemester.textContent);
+            selectSemesterPeriod(selectedPeriod.includes("상반기") ? "상반기" : "하반기");
         });
 
         semesterSelection.appendChild(newSemester);
 
         // Reset and close the modal
         document.getElementById("semesterForm").reset();
-        selectedPeriod = '';
+
         closeModal("semesterModal");
     } else {
         alert("모든 필드를 입력해주세요.");
