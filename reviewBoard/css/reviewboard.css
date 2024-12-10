@@ -343,3 +343,5 @@ body{background-color: #f5f5f5;}
 .sidebar-overlay.active {
     display: block;
 }
+
+.dropdown-content >li >a {font-weight: normal;}
