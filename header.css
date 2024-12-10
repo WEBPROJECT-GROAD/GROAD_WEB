@@ -108,10 +108,12 @@ header {
 }
 
 .dropdown-content {
+    opacity: 0;
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%; 
+    transform: translateX(-50%) translateY(-10px);
     background-color: white;
     min-width: 200px;
     padding: 15px;
@@ -120,10 +122,21 @@ header {
     z-index: 1;
     text-align: center;
     gap: 15px; 
+    transition: all 0.3s ease-in-out;
+}
+
+/* 부모에 호버했을 때 드롭다운 보이기 */
+.dropdown:hover .dropdown-content {
+    display: block; 
+    opacity: 1; /* 보이게 설정 */
+    transform: translateX(-50%) translateY(0); /* 제자리로 이동 */
+    visibility: visible; /* 표시 */
+    transition: all 1s;
 }
 
 .dropdown-content a {
     color: #B3B3B3;
+    display: block;
     font-size: 15px;
     line-height: 1.5;
     text-decoration: none;
@@ -132,6 +145,7 @@ header {
 .dropdown-content a:hover{
     color: #11DDB1;
     font-weight: bold;
+    transition: max-height 2s ease-in-out;
     
 }
 

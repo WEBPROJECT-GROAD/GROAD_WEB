@@ -36,10 +36,11 @@
                 <div class="dropdown active">
                     <a href="#">후기 게시판</a>
                     <div class="dropdown-content">
-                        <li><a href="#">취업 / 인턴</a></li>
-                        <li><a href="#">대외활동 / 공모전</a></li>
-                        <li><a href="#">자격 / 어학</a></li>
-                        <li><a href="#">창업</a></li>
+                        <li><a href="../reviewBoard/reviewboard.html?category=activity1">대외활동</a></li>
+                            <li><a href="../reviewBoard/reviewboard.html?category=activity2">공모전</a></li>
+                            <li><a href="../reviewBoard/reviewboard.html?category=certificate">자격 / 어학</a></li>
+                            <li><a href="../reviewBoard/reviewboard.html?category=job">취업 / 인턴</a></li>
+                            <li><a href="../reviewBoard/reviewboard.html?category=startup">창업</a></li>
                     </div>
                 </div>
                 <div class="dropdown inactive">
@@ -81,11 +82,11 @@
             <div class="contentTab">
                 <div class="tabOptions">
                     <button class="sort-tab tabActive" data-category="all" onclick="activeReview('all',this)">전체</button>
-                    <button class="sort-tab"onclick="activeReview('activity1',this)">대외활동</button>
-                    <button class="sort-tab"onclick="activeReview('activity2',this)">공모전 후기</button>
-                    <button class="sort-tab" onclick="activeReview('certificate',this)">자격증/어학 후기</button>
-                    <button class="sort-tab"  onclick="activeReview('job',this)">인턴/취업 후기</button>
-                    <button class="sort-tab"  onclick="activeReview('startup',this)">창업 후기</button>
+                    <button class="sort-tab" data-category="activity1" onclick="activeReview('activity1',this)">대외활동</button>
+                    <button class="sort-tab" data-category="activity2" onclick="activeReview('activity2',this)">공모전 후기</button>
+                    <button class="sort-tab" data-category="certificate" onclick="activeReview('certificate',this)">자격증/어학 후기</button>
+                    <button class="sort-tab" data-category="job" onclick="activeReview('job',this)">인턴/취업 후기</button>
+                    <button class="sort-tab" data-category="startup" onclick="activeReview('startup',this)">창업 후기</button>
                 </div>
                 <div class="conHeadWrap">
                     <h5>전체 후기 21건</h5>
