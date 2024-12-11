@@ -121,7 +121,7 @@ function renderFilteredReviews(filteredReviews){
         <div id="reviewWrap">
             <div id="reviewCategory">${review.catName}</div>
             <div id="reviewPrf">
-                <img src="../resumeBoard/img/prf.png">
+                <img src="../resumeboard/img/prf.png">
                 <p>${review.name}</p>
             </div>
             <div id="reviewContent">
@@ -170,7 +170,7 @@ function renderReviewDetails(review){
             <div id="detailCategory">${review.catName}</div>
             <div id="detailTop">
                 <div id="detailPrf">
-                    <img src="../resumeBoard/img/prf.png">
+                    <img src="../resumeboard/img/prf.png">
                         <p>${review.name}</p>
                 </div>
                 <div id="detailInfo">

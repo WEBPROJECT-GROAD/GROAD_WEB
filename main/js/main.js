@@ -96,16 +96,16 @@ function renderProfileDetails(profile) {
             .map(
                 (qnaItem) => `
                 <div class="qa-block">
-                    <img src="../../resumeboard/img/prf.png" alt="${anonymizeName(qnaItem.questioner)}">
+                    <img src="../resumeboard/img/prf.png" alt="${anonymizeName(qnaItem.questioner)}">
                     <div class="qaText">
                         <p class="qaName">${anonymizeName(qnaItem.questioner)}</p>
                         <p>${qnaItem.question}</p>
                     </div>
                 </div>
                 <div class="answerWrap">
-                    <img src="../../resumeboard/img/answer.png" alt="Answer">
+                    <img src="../resumeboard/img/answer.png" alt="Answer">
                     <div class="a-block">
-                        <img class="qa-prf" src="../../resumeboard/img/prf.png" alt="${profile.name}">
+                        <img class="qa-prf" src="../resumeboard/img/prf.png" alt="${profile.name}">
                         <p>${qnaItem.answer}</p>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ function renderProfileDetails(profile) {
         <button id="page-back1" onclick="backToProfiles()"> < 이력서 목록 </button>
         <button id="toReviewBtn" onclick="reviewContents()">후기 작성하기</button>
         <div class="profileDetail" style="margin-top:90px">
-            <img src="../../resumeboard/img/prf.png" alt="${profile.name}">
+            <img src="../resumeboard/img/prf.png" alt="${profile.name}">
             <div class="info">
                 <p>이름 : ${profile.name}</p>
                 <p>${profile.university}</p>
@@ -172,7 +172,7 @@ function renderProfileDetails(profile) {
         const newQuestionBlock = document.createElement("div");
         newQuestionBlock.className = "qa-block";
         newQuestionBlock.innerHTML = `
-            <img src="../../resumeboard/img/prf.png" alt="이름">
+            <img src="../resumeboard/img/prf.png" alt="이름">
             <div class="qaText">
                 <p class="qaName">안정후</p>
                 <p>${questionText}</p>
