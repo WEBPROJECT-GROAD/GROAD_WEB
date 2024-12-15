@@ -461,7 +461,7 @@ body{font-family: 'Pretendard', sans-serif;
 #page-back1 {
     font-size: 13px;
     position: absolute;
-    top: 28%;
+    top: 22%;
     left: 260px;
     background: none;
     border: none;
@@ -470,7 +470,7 @@ body{font-family: 'Pretendard', sans-serif;
 }
 #toReviewBtn {
     position: absolute;
-    top: 27%;
+    top: 21%;
     right: 260px;
     background-color: #fff;
     color: #9F9F9F;
